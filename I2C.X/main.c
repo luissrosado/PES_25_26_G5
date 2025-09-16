@@ -8,7 +8,9 @@
 #define FOSC 8000000UL
 #define FCY FOSC/2
 
-#define INA_addr 0b10000000 // 7 MSB correspond to address (check p.14 on INA datasheet), last bit will be set or cleared depending on operation (R/~W)
+#define INA_ADDR 0b10000000 // 7 MSB correspond to address (check p.14 on INA datasheet), last bit will be set or cleared depending on operation (R/~W)
+#define INA_CAL_ADDR 0x05   // INA calibration register address
+#define INA_CALIBRATION 0x00 // no value for now. Need to make calculations (check p.12 on INA datasheet)
 
 #include <stdint.h>
 #include <libpic30.h>
@@ -68,6 +70,34 @@ uint16_t I2C_Read_INA(uint8_t slave_addr, uint8_t register_addr)
     return received_data;
 }
 
+void I2C_Calibrate_INA(uint8_t slave_addr, uint16_t cal)
+{
+    // start communication
+    I2C1CON1bits.SEN = 1;       // init start condition
+    while(I2C1CON1bits.SEN);    // wait for hardware clear (end of start condition)
+    
+    
+    // write
+    I2C1TRN = slave_addr & 0b11111110;   // set LSB as Write(0) and store transmission data on register
+    while(I2C1STATbits.TRSTAT); // wait until the transmission is complete (slave ACK reception)
+    
+    I2C1TRN = INA_CAL_ADDR;     // send calibration register address and wait for ACK
+    while(I2C1STATbits.TRSTAT); // after this, register pointer is set and data can be sent
+    
+    I2C1TRN = cal >> 8;         // send high byte
+    while(I2C1STATbits.TRSTAT); // wait for ACK
+    
+    I2C1TRN = cal;              // send low byte
+    while(I2C1STATbits.TRSTAT); // wait for ACK
+    
+    
+    // stop communication
+    I2C1CON1bits.PEN = 1;       // init stop condition
+    while(I2C1CON1bits.PEN);    // wait for hardware clear (end of stop condition) [provavelmente não é necessário esperar a não ser que decidamos escrever logo a seguir, not sure]
+    
+    return;
+}
+
 int main(void) {
     // isto é necessário ou era para os leds?
     //ANSELBbits.ANSB3 = 0;
@@ -79,8 +109,8 @@ int main(void) {
     
     while(1)
     {
-        
-        reading_raw = I2C_Read_INA(INA_addr, register_addr);
+        I2C_Calibrate_INA(INA_ADDR, INA_CALIBRATION)
+        reading_raw = I2C_Read_INA(INA_ADDR, register_addr);
         __delay_ms(1000);
         
     }
