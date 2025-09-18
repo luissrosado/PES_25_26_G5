@@ -4,17 +4,10 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.00 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.01 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.02 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.03 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.04 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.05 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Users/rodis/.mchp_packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
-  dist/default/debug/I2C.X.debug.elf \
+  dist/default/production/I2C.X.production.elf \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/.. \
   -LC:/Users/rodis/.mchp_packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16/bin/../support/PIC24F/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../lib \
@@ -25,12 +18,10 @@ Command:
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33C/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
-  build/default/debug/main.o \
+  build/default/production/main.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
-  --defsym=__MPLAB_DEBUG=1 \
-  --defsym=__DEBUG=1 \
-  -Tp24FJ256GA702.gld.07 \
+  -Tp24FJ256GA702.gld.00 \
   --stack=16 \
   --check-sections \
   --data-init \
@@ -42,10 +33,10 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/debug/I2C.X.debug.map \
+  -Map=dist/default/production/I2C.X.production.map \
   --report-mem \
   --memorysummary \
-  dist/default/debug/memoryfile.xml \
+  dist/default/production/memoryfile.xml \
   -start-group \
   --library=c99-pic30-elf \
   --library=m-elf \
@@ -63,7 +54,7 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
                               (__crt_start_mode_normal)
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                              build/default/debug/main.o (___delay32)
+                              build/default/production/main.o (___delay32)
 
 
 Selected CodeGuard Options:
@@ -98,25 +89,18 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a               0x16c           0x222  (546)
-.init.delay32                0x376                0x1c            0x2a  (42)
+.text                        0x20a               0x15e           0x20d  (525)
+.init.delay32                0x368                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0x3db  (987) <1%
+                 Total "program" memory used (bytes):          0x3c6  (966) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-reserve_data_0x800           0x800                0x1c            0x1c  (28)
-reserve_data_0x81c           0x81c                 0x2             0x2  (2)
-reserve_data_0x81e           0x81e                 0x2             0x2  (2)
-reserve_data_0x820           0x820                 0x2             0x2  (2)
-reserve_data_0x822           0x822                 0x2             0x2  (2)
-reserve_data_0x824           0x824                 0x4             0x4  (4)
-reserve_data_0x82a           0x82a                0x26            0x26  (38)
 
-                 Total "data" memory used (bytes):           0x4e  (78) <1%
+                 Total "data" memory used (bytes):              0  (0) 
 
 
 Dynamic Memory Usage
@@ -124,9 +108,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x850                              0x3fb0  (16304)
+stack                        0x800                              0x4000  (16384)
 
-                 Maximum dynamic memory (bytes):         0x3fb0  (16304)
+                 Maximum dynamic memory (bytes):         0x4000  (16384)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -139,25 +123,25 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _I2C_init
-                  0x00021c                  _I2C_Read_INA
-                  0x0002de                  _I2C_Calibrate_INA
-                  0x000346                  _main
-                  0x000376                  ___delay32
+                  0x00021a                  _I2C_Read_INA
+                  0x0002c4                  _I2C_Calibrate_INA
+                  0x000338                  _main
+                  0x000368                  ___delay32
                   0x02af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0002de                  _I2C_Calibrate_INA
-                  0x00021c                  _I2C_Read_INA
+                  0x0002c4                  _I2C_Calibrate_INA
+                  0x00021a                  _I2C_Read_INA
                   0x00020a                  _I2C_init
                   0x000204                  __DefaultInterrupt
                   0x02af00                  __FSEC.sec
-                  0x000376                  ___delay32
+                  0x000368                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000346                  _main
+                  0x000338                  _main
 
 Memory Configuration
 
@@ -179,45 +163,8 @@ FDEVOPT1         0x02af2c           0x000002
 
 Linker script and memory map
 
-
-reserve_data_0x800
-                    0x0800         0x1c
-                    0x081c                  . = 0x1c
- *fill*             0x0800         0x1c00
-
-reserve_data_0x81c
-                    0x081c          0x2
-                    0x081e                  . = 0x2
- *fill*             0x081c          0x200
-
-reserve_data_0x81e
-                    0x081e          0x2
-                    0x0820                  . = 0x2
- *fill*             0x081e          0x200
-
-reserve_data_0x820
-                    0x0820          0x2
-                    0x0822                  . = 0x2
- *fill*             0x0820          0x200
-
-reserve_data_0x822
-                    0x0822          0x2
-                    0x0824                  . = 0x2
- *fill*             0x0822          0x200
-
-reserve_data_0x824
-                    0x0824          0x4
-                    0x0828                  . = 0x4
- *fill*             0x0824          0x400
-
-reserve_data_0x82a
-                    0x082a         0x26
-                    0x0850                  . = 0x26
- *fill*             0x082a         0x2600
-LOAD build/default/debug/main.o
+LOAD build/default/production/main.o
                     0x0001                  __MPLAB_BUILD = 0x1
-                    0x0001                  __MPLAB_DEBUG = 0x1
-                    0x0001                  __DEBUG = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                     0x2af00                  __FSEC = 0x2af00
@@ -301,24 +248,24 @@ __FDEVOPT1
 
 .debug_info       0x000000        0xd55
  *(.debug_info)
- .debug_info      0x000000        0xd55 build/default/debug/main.o
+ .debug_info      0x000000        0xd55 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x12f
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x12f build/default/debug/main.o
+ .debug_abbrev    0x000000        0x12f build/default/production/main.o
 
-.debug_line       0x000000        0x12f
+.debug_line       0x000000        0x12b
  *(.debug_line)
- .debug_line      0x000000        0x12f build/default/debug/main.o
+ .debug_line      0x000000        0x12b build/default/production/main.o
 
 .debug_frame      0x000000         0x7c
  *(.debug_frame)
- .debug_frame     0x000000         0x7c build/default/debug/main.o
+ .debug_frame     0x000000         0x7c build/default/production/main.o
 
 .debug_str        0x000000         0x5e
  *(.debug_str)
- .debug_str       0x000000         0x5e build/default/debug/main.o
+ .debug_str       0x000000         0x5e build/default/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -330,7 +277,7 @@ __FDEVOPT1
                   0x000000         0x4f
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x4f build/default/debug/main.o
+                  0x000000         0x4f build/default/production/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -338,7 +285,7 @@ __FDEVOPT1
 .debug_aranges    0x000000         0x18
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/debug/main.o
+                  0x000000         0x18 build/default/production/main.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1675,19 +1622,19 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
 END GROUP
-OUTPUT(dist/default/debug/I2C.X.debug.elf elf32-pic30)
+OUTPUT(dist/default/production/I2C.X.production.elf elf32-pic30)
 LOAD /CW/_FSEC
 LOAD default_isr
 
 .debug_pubtypes
                   0x000018         0xf7
  .debug_pubtypes
-                  0x000018         0xf7 build/default/debug/main.o
+                  0x000018         0xf7 build/default/production/main.o
 
 __c30_signature
                   0x00010f         0x18
  __c30_signature
-                  0x00010f          0x6 build/default/debug/main.o
+                  0x00010f          0x6 build/default/production/main.o
  __c30_signature
                   0x000115          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
@@ -1698,36 +1645,36 @@ __c30_signature
 .config_ALTI2C1
                   0x02af2c          0x2
  .config_ALTI2C1
-                  0x02af2c          0x2 build/default/debug/main.o
+                  0x02af2c          0x2 build/default/production/main.o
 
 .config_JTAGEN    0x02af28          0x2
  .config_JTAGEN
-                  0x02af28          0x2 build/default/debug/main.o
+                  0x02af28          0x2 build/default/production/main.o
 
 .config_DNVPEN    0x02af24          0x2
  .config_DNVPEN
-                  0x02af24          0x2 build/default/debug/main.o
+                  0x02af24          0x2 build/default/production/main.o
 
 .config_WDTCLK    0x02af20          0x2
  .config_WDTCLK
-                  0x02af20          0x2 build/default/debug/main.o
+                  0x02af20          0x2 build/default/production/main.o
 
 .config_FCKSM     0x02af1c          0x2
- .config_FCKSM    0x02af1c          0x2 build/default/debug/main.o
+ .config_FCKSM    0x02af1c          0x2 build/default/production/main.o
 
 .config_IESO      0x02af18          0x2
- .config_IESO     0x02af18          0x2 build/default/debug/main.o
+ .config_IESO     0x02af18          0x2 build/default/production/main.o
 
 .config_BSLIM     0x02af10          0x2
- .config_BSLIM    0x02af10          0x2 build/default/debug/main.o
+ .config_BSLIM    0x02af10          0x2 build/default/production/main.o
 
-.text             0x00020a        0x16c
- .text            0x00020a        0x16c build/default/debug/main.o
+.text             0x00020a        0x15e
+ .text            0x00020a        0x15e build/default/production/main.o
                   0x00020a                  _I2C_init
-                  0x00021c                  _I2C_Read_INA
-                  0x0002de                  _I2C_Calibrate_INA
-                  0x000346                  _main
+                  0x00021a                  _I2C_Read_INA
+                  0x0002c4                  _I2C_Calibrate_INA
+                  0x000338                  _main
 
-.init.delay32     0x000376         0x1c
- .init.delay32    0x000376         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                  0x000376                  ___delay32
+.init.delay32     0x000368         0x1c
+ .init.delay32    0x000368         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
+                  0x000368                  ___delay32
