@@ -35,11 +35,11 @@ void spi_init()
    SPI1CON1Lbits.SPIEN = 1;      // Enable the spi peripheral
 }
 
-void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t lenght)
+void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
 {
     LATBbits.LATB1 = 0;
     __delay_ms(1000);// select slave
-    //for(uint16_t i = 0; i < lenght; i++)
+    //for(uint16_t i = 0; i < length; i++)
     //{
     SPI1BUFL  = data[1];                 // write to buffer for Transmit
     while(!SPI1STATLbits.SPIRBF);       // Wait until tx is completed
