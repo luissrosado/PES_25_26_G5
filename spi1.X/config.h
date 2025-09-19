@@ -56,7 +56,8 @@
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
-
+#define FOSC 8000000UL
+#define FCY FOSC/2
 
 #include <xc.h>
 #include <stdint.h>
@@ -64,5 +65,4 @@
 #include "p24FJ1024GB610.h"
 
 
-#define FOSC 8000000UL
-#define FCY FOSC/2
+

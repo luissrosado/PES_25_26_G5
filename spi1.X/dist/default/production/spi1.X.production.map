@@ -53,6 +53,8 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_
                               c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o) (__data_init_da)
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
                               (__crt_start_mode_normal)
+c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
+                              build/default/production/main.o (___delay32)
 
 
 Selected CodeGuard Options:
@@ -87,9 +89,10 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0xb0           0x108  (264)
+.text                        0x20a                0xa4            0xf6  (246)
+.init.delay32                0x2ae                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0x297  (663) <1%
+                 Total "program" memory used (bytes):          0x2af  (687) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x8000]
@@ -116,24 +119,26 @@ External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
-                  0x000152                  __data_init_da
                   0x000152                  __data_init
+                  0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _spi_init
-                  0x000254                  _spi_com
-                  0x000296                  _main
+                  0x000256                  _spi_com
+                  0x00027e                  _main
+                  0x0002ae                  ___delay32
                   0x0abf00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
                   0x000204                  __DefaultInterrupt
                   0x0abf00                  __FSEC.sec
+                  0x0002ae                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000296                  _main
-                  0x000254                  _spi_com
+                  0x00027e                  _main
+                  0x000256                  _spi_com
                   0x00020a                  _spi_init
 
 Memory Configuration
@@ -244,26 +249,26 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x124c
+.debug_info       0x000000       0x1238
  *(.debug_info)
- .debug_info      0x000000       0x124c build/default/production/main.o
+ .debug_info      0x000000       0x1238 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x159
+.debug_abbrev     0x000000        0x150
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x159 build/default/production/main.o
+ .debug_abbrev    0x000000        0x150 build/default/production/main.o
 
-.debug_line       0x000000        0x126
+.debug_line       0x000000        0x127
  *(.debug_line)
- .debug_line      0x000000        0x126 build/default/production/main.o
+ .debug_line      0x000000        0x127 build/default/production/main.o
 
 .debug_frame      0x000000         0x62
  *(.debug_frame)
  .debug_frame     0x000000         0x62 build/default/production/main.o
 
-.debug_str        0x000000         0x98
+.debug_str        0x000000         0x99
  *(.debug_str)
- .debug_str       0x000000         0x98 build/default/production/main.o
+ .debug_str       0x000000         0x99 build/default/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -2403,18 +2408,20 @@ LOAD /CW/_FSEC
 LOAD default_isr
 
 .debug_pubtypes
-                  0x000018        0x1af
+                  0x000018        0x1b1
  .debug_pubtypes
-                  0x000018        0x1af build/default/production/main.o
+                  0x000018        0x1b1 build/default/production/main.o
 
 __c30_signature
-                  0x0001c7         0x12
+                  0x0001c9         0x18
  __c30_signature
-                  0x0001c7          0x6 build/default/production/main.o
+                  0x0001c9          0x6 build/default/production/main.o
  __c30_signature
-                  0x0001cd          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
+                  0x0001cf          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
-                  0x0001d3          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
+                  0x0001d5          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
+ __c30_signature
+                  0x0001db          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
 
 .config_ALTVREF
                   0x0abf2c          0x2
@@ -2441,8 +2448,12 @@ __c30_signature
 .config_BSLIM     0x0abf10          0x2
  .config_BSLIM    0x0abf10          0x2 build/default/production/main.o
 
-.text             0x00020a         0xb0
- .text            0x00020a         0xb0 build/default/production/main.o
+.text             0x00020a         0xa4
+ .text            0x00020a         0xa4 build/default/production/main.o
                   0x00020a                  _spi_init
-                  0x000254                  _spi_com
-                  0x000296                  _main
+                  0x000256                  _spi_com
+                  0x00027e                  _main
+
+.init.delay32     0x0002ae         0x1c
+ .init.delay32    0x0002ae         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
+                  0x0002ae                  ___delay32
