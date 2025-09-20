@@ -1,32 +1,34 @@
-#define FCY 8000000UL
+#define FOSC 8000000UL
+#define FCY FOSC/2
+
 #include "xc.h"
-#include <libpic30.h>
 #include "cfigbits.h"
+#include <libpic30.h>
 #include <p24FJ256GA702.h>
 
-void main(void) {
-    CCP2RA = 0x7FFF;                // 50% Duty Cycle
-    CCP2PRL = 0xFFFF;               // 
-    
-    TRISBbits.TRISB14 = 0b0;        // pin 25 (RB14) defined as output
-    ANSELBbits.ANSB14 = 0b0;        // pin 25 (RB14) defined an digital O
-    
-    // PIC24FJ256GA702 uses PPS (Peripheral Pin Selection):
-    RPOR7bits.RP14R = 0x14;         // RB14 is set with OC2 Output Compare/PWM function
-    // pages 138 for output function number and 154 for output register
-    
-    CCP2CON1Lbits.CCPON = 0b0;      // clear associated registers
-    // CCPON = 0 disables module and is enabled once MOD[3:0] is specified
-    
-    CCP2CON1Lbits.TMRSYNC = 0b1;    // time base clock synced to internal system clocks
-    CCP2CON1Lbits.CLKSEL = 0b000;   // System Clock (Tcy)
-    CCP2CON1Lbits.TMRPS = 0b00;     // 1:1 Prescaler
-    CCP2CON1Lbits.T32 = 0b0;        // 16 bit Operation
-    CCP2CON1Lbits.CCSEL = 0b0;      // Output Capture Mode
-    CCP2CON1Lbits.CCPMOD = 0b0010;  // Output Low on Compare -> High to Low after compare
 
-    CCP2CON2Hbits.OCAEN = 0b1;      // Enable desired output signals (OC1A) 
-    CCP2STATLbits.CCPTRIG = 0b1;    // Timer has been triggered and is running
-       
-    return;
-}
+void main(void) {    
+    TRISBbits.TRISB10 = 0b0;        // RB10 (pin 21 - remappable) defined as output
+    RPOR5bits.RP10R = 13;           // defined RB10 as Output Compare 1 (OC1)
+    OSCCONbits.IOLOCK = 0b1;        // IO Lock for PPS is active
+
+    PR1 = 61;                       // PWM Frequency in Hz (R=16bits, Prescaler 1:1))
+ 
+    OC1R = 0xEFFF;                  // 93% Duty Cycle defined
+    OC1RS = 0xFFFF;                 // PWM period as calculated (16 ms)
+    
+    OC1CON1bits.OCTSEL = 0b111;     // Peripheral Clocl (Fcy) selected
+    OC1CON1bits.OCM = 0b011;        // Single Compare Continuous Pulse mode
+    
+    OC1CON2bits.OCTRIG = 0b0;       // Syncs OCx with source designated by SYNCSELx bits
+    OC1CON2bits.SYNCSEL = 0x1F;     // OC1 Sync Out defined
+            
+     
+    while(1){
+        //if(OC1TMR == 0xFFFF)
+          //  LAT
+    }
+ }
+
+// PIC24FJ256GA702 uses PPS (Peripheral Pin Selection):
+// pages 138 for output function number and 154 for output register
