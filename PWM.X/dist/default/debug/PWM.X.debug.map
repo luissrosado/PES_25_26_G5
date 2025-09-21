@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp0000548c.00 \
-  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp0000548c.01 \
-  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp0000548c.02 \
-  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp0000548c.03 \
-  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp0000548c.04 \
-  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp0000548c.05 \
-  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp0000548c.06 \
+  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp00003b70.00 \
+  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp00003b70.01 \
+  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp00003b70.02 \
+  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp00003b70.03 \
+  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp00003b70.04 \
+  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp00003b70.05 \
+  -TC:\\Users\\UTILIZ~1\\AppData\\Local\\Temp\\tmp00003b70.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC24F-GA-GB_DFP/1.9.336/xc16 \
   -o \
@@ -288,9 +288,9 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x9f9
+.debug_info       0x000000        0x9f7
  *(.debug_info)
- .debug_info      0x000000        0x9f9 build/default/debug/main.o
+ .debug_info      0x000000        0x9f7 build/default/debug/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000         0xc5
