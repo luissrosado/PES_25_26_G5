@@ -33,7 +33,8 @@ void timer1_setup(uint16_t period)
 
 void __attribute__((__interrupt__, __shadow__)) _T1Interrupt(void)
 {
-    IFS0bits.T1IF = 0; //Reset Timer1 interrupt flag
+    IFS0bits.T1IF = 0;  //Reset Timer1 interrupt flag
+    TMR1 = 0x00;        //Reset the timer, restarting count
     LATBbits.LATB3 = ~LATBbits.LATB3;   //Toggle LED
 }
 
