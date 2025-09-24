@@ -1,6 +1,10 @@
 #include "pwm.h"
 
 void main(void) {
+    INTCON2bits.GIE = 0b1;          // Interrupts enabled
+    CLKDIVbits.DOZEN = 0b0;         // CPU peripheral clock ratio is set to 1:1
+    CLKDIVbits.PLLEN = 0b0;         // PLL disabled
+    
     TRISBbits.TRISB6 = 0b0;         // RB6 (pin 15 - remappable) defined as output
     OSCCONbits.IOLOCK = 0b0;        // IO Lock for PPS is inactive
     RPOR3bits.RP6R = 13;            // defined RB10 as Output Compare 1 (OC1)
@@ -10,19 +14,12 @@ void main(void) {
     PWM_init(aux);
     
     while(1){
-        __delay_ms(2000);
-        if(aux == 99){
-            aux = aux - 9;
-            PWM_updDcyc(aux);
-        }else{
-            aux = aux - 10;
-            PWM_updDcyc(aux);
-        }
+        __delay_ms(50);
+        aux = aux - 1;
+        PWM_updDcyc(aux);
         
         if(aux <= 0)    aux = 99;       
     }
-    
-    return;
  }
 
 // PIC24FJ256GA702 uses PPS (Peripheral Pin Selection):
