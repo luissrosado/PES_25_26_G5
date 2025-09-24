@@ -7,6 +7,7 @@
 
 
 #include "config.h"
+//#include "lcd.h"
 
 
 void spi_init()
@@ -21,7 +22,7 @@ void spi_init()
    SPI1CON1bits.CKP = 0;         // clock is low when idle
    SPI1CON1bits.CKE = 1;          // Data changes on the falling edge (because idle is on low if ckp = 1 changes this bit)
    SPI1CON1bits.MSTEN = 1;       // Define device as master
-   SPI1BRGLbits.BRG = 4;         // fcy/BRG = freq of spi
+   SPI1BRGL = 4;         // fcy/BRG = freq of spi
    SPI1CON2 = 0;                 // disable frame mode
    RPINR20bits.SDI1R = 26;        // miso config pin to rp26 P11
    RPOR9bits.RP19R = 7;           // mosi config pin to rp19 P12
@@ -33,12 +34,16 @@ void spi_init()
 
    
    SPI1CON1Lbits.SPIEN = 1;      // Enable the spi peripheral
+   
+   
+   
+
 }
 
 void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
 {
     LATBbits.LATB1 = 0;
-    __delay_ms(1000);// select slave
+    __delay_us(5);// select slave
     //for(uint16_t i = 0; i < length; i++)
     //{
     SPI1BUFL  = data[1];                 // write to buffer for Transmit
@@ -54,14 +59,13 @@ int main(void) {
     uint16_t rx_data[4];
     
     spi_init();
-    
+
     while(1)
     {
         LATBbits.LATB1 = 1;
         __delay_ms(1000);
         spi_com(tx_data, rx_data, 4);
         __delay_ms(1000);
-        LATBbits.LATB1 = 0;
     }
     
     return 0;

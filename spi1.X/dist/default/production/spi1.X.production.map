@@ -18,7 +18,6 @@ Command:
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33C/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
-  build/default/production/main.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24FJ1024GB610.gld.00 \
@@ -53,29 +52,6 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_
                               c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o) (__data_init_da)
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
                               (__crt_start_mode_normal)
-c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                              build/default/production/main.o (___delay32)
-
-
-Selected CodeGuard Options:
-  FSEC:BWRP:OFF
-  FSEC:BSS:DISABLED
-  FSEC:BSEN:OFF
-  FSEC:GWRP:OFF
-  FSEC:GSS:DISABLED
-  FSEC:CWRP:OFF
-  FSEC:CSS:DISABLED
-  FSEC:AIVTDIS:OFF
-
-CodeGuard FLASH Memory:
-  boot    (none)
-  secure  (none)
-  general 0x100 to 0xabefe
-
-CodeGuard RAM Memory:
-  general 0x800 to 0x87ff
-  secure  (none)
-  boot    (none)
 
 
 xc16-ld 2.10 (B)
@@ -89,10 +65,8 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a                0xaa            0xff  (255)
-.init.delay32                0x2b4                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0x2b8  (696) <1%
+                 Total "program" memory used (bytes):          0x18f  (399) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x8000]
@@ -112,8 +86,6 @@ stack                        0x800                              0x7800  (30720)
 
                  Maximum dynamic memory (bytes):         0x7800  (30720)
 
-Info: Project is using a large data memory model when small data memory model is sufficient.
-
 
 External Symbols in Program Memory (by address):
 
@@ -122,24 +94,14 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
-                  0x00020a                  _spi_init
-                  0x000256                  _spi_com
-                  0x000284                  _main
-                  0x0002b4                  ___delay32
-                  0x0abf00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
                   0x000204                  __DefaultInterrupt
-                  0x0abf00                  __FSEC.sec
-                  0x0002b4                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000284                  _main
-                  0x000256                  _spi_com
-                  0x00020a                  _spi_init
 
 Memory Configuration
 
@@ -162,7 +124,6 @@ FDEVOPT1         0x0abf2c           0x000002
 
 Linker script and memory map
 
-LOAD build/default/production/main.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
@@ -217,10 +178,8 @@ usercode
 __FBOOT
  *(__FBOOT.sec*)
 
-__FSEC            0x0abf00          0x2
+__FSEC
  *(__FSEC.sec*)
- __FSEC.sec       0x0abf00          0x2 /CW/_FSEC
-                  0x0abf00                  __FSEC.sec
 
 __FBSLIM
  *(__FBSLIM.sec*)
@@ -249,26 +208,21 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1238
+.debug_info
  *(.debug_info)
- .debug_info      0x000000       0x1238 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x150
+.debug_abbrev
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x150 build/default/production/main.o
 
-.debug_line       0x000000        0x128
+.debug_line
  *(.debug_line)
- .debug_line      0x000000        0x128 build/default/production/main.o
 
-.debug_frame      0x000000         0x62
+.debug_frame
  *(.debug_frame)
- .debug_frame     0x000000         0x62 build/default/production/main.o
 
-.debug_str        0x000000         0x99
+.debug_str
  *(.debug_str)
- .debug_str       0x000000         0x99 build/default/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -277,18 +231,13 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x34
  *(.debug_pubnames)
- .debug_pubnames
-                  0x000000         0x34 build/default/production/main.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x18
+.debug_aranges
  *(.debug_aranges)
- .debug_aranges
-                  0x000000         0x18 build/default/production/main.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -2404,56 +2353,11 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
 END GROUP
 OUTPUT(dist/default/production/spi1.X.production.elf elf32-pic30)
-LOAD /CW/_FSEC
 LOAD default_isr
 
-.debug_pubtypes
-                  0x000018        0x1b1
- .debug_pubtypes
-                  0x000018        0x1b1 build/default/production/main.o
-
 __c30_signature
-                  0x0001c9         0x18
+                  0x000000          0xc
  __c30_signature
-                  0x0001c9          0x6 build/default/production/main.o
+                  0x000000          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
-                  0x0001cf          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
- __c30_signature
-                  0x0001d5          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
- __c30_signature
-                  0x0001db          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-
-.config_ALTVREF
-                  0x0abf2c          0x2
- .config_ALTVREF
-                  0x0abf2c          0x2 build/default/production/main.o
-
-.config_BTSWP     0x0abf28          0x2
- .config_BTSWP    0x0abf28          0x2 build/default/production/main.o
-
-.config_DNVPEN    0x0abf24          0x2
- .config_DNVPEN
-                  0x0abf24          0x2 build/default/production/main.o
-
-.config_WDTCLK    0x0abf20          0x2
- .config_WDTCLK
-                  0x0abf20          0x2 build/default/production/main.o
-
-.config_FCKSM     0x0abf1c          0x2
- .config_FCKSM    0x0abf1c          0x2 build/default/production/main.o
-
-.config_IESO      0x0abf18          0x2
- .config_IESO     0x0abf18          0x2 build/default/production/main.o
-
-.config_BSLIM     0x0abf10          0x2
- .config_BSLIM    0x0abf10          0x2 build/default/production/main.o
-
-.text             0x00020a         0xaa
- .text            0x00020a         0xaa build/default/production/main.o
-                  0x00020a                  _spi_init
-                  0x000256                  _spi_com
-                  0x000284                  _main
-
-.init.delay32     0x0002b4         0x1c
- .init.delay32    0x0002b4         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                  0x0002b4                  ___delay32
+                  0x000006          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
