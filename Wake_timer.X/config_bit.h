@@ -24,7 +24,7 @@
 // FOSC
 #pragma config POSCMD = NONE            // Primary Oscillator Mode Select bits (Primary Oscillator disabled)
 #pragma config OSCIOFCN = OFF           // OSC2 Pin Function bit (OSC2 is clock output)
-#pragma config SOSCSEL = OFF             // SOSC Power Selection Configuration bits (SOSC is used in crystal (SOSCI/SOSCO) mode)
+#pragma config SOSCSEL = ON             // SOSC Power Selection Configuration bits (SOSC is used in crystal (SOSCI/SOSCO) mode)
 #pragma config PLLSS = PLL_PRI          // PLL Secondary Selection Configuration bit (PLL is fed by the Primary oscillator)
 #pragma config IOL1WAY = ON             // Peripheral pin select configuration bit (Allow only one reconfiguration)
 #pragma config FCKSM = CSDCMD           // Clock Switching Mode bits (Both Clock switching and Fail-safe Clock Monitor are disabled)
@@ -44,7 +44,7 @@
 #pragma config DNVPEN = ENABLE          // Downside Voltage Protection Enable bit (Downside protection enabled using ZPBOR when BOR is inactive)
 
 // FICD
-#pragma config ICS = PGD2               // ICD Communication Channel Select bits (Communicate on PGEC1 and PGED1)
+#pragma config ICS = PGD1               // ICD Communication Channel Select bits (Communicate on PGEC1 and PGED1)
 #pragma config JTAGEN = OFF              // JTAG Enable bit (JTAG is disabled)
 
 // FDEVOPT1

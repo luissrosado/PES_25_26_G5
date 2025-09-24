@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00002d6c.00 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00002d6c.01 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00002d6c.02 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00002d6c.03 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00002d6c.04 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00002d6c.05 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00002d6c.06 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006870.00 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006870.01 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006870.02 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006870.03 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006870.04 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006870.05 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006870.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Users/rodis/.mchp_packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
@@ -97,10 +97,10 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x164           0x216  (534)
-.text                        0x264                0x62            0x93  (147)
+.text                        0x100               0x162           0x213  (531)
+.text                        0x262                0x54            0x7e  (126)
 
-                 Total "program" memory used (bytes):          0x2a9  (681) <1%
+                 Total "program" memory used (bytes):          0x291  (657) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -137,24 +137,24 @@ External Symbols in Program Memory (by address):
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x000204                  __T1Interrupt
-                  0x00023e                  __DefaultInterrupt
-                  0x000244                  ___udivsi3
-                  0x000264                  _timer1_setup
-                  0x00028c                  _main
+                  0x00023c                  __DefaultInterrupt
+                  0x000242                  ___udivsi3
+                  0x000262                  _timer1_setup
+                  0x000282                  _main
                   0x02af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x00023e                  __DefaultInterrupt
+                  0x00023c                  __DefaultInterrupt
                   0x02af00                  __FSEC.sec
                   0x000204                  __T1Interrupt
-                  0x000244                  ___udivsi3
+                  0x000242                  ___udivsi3
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x00028c                  _main
-                  0x000264                  _timer1_setup
+                  0x000282                  _main
+                  0x000262                  _timer1_setup
 
 Memory Configuration
 
@@ -238,7 +238,7 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x164
+.text             0x000100        0x162
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
                   0x000100                  __resetPRI
@@ -250,20 +250,20 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x000204         0x3a build/default/debug/main.o
+ .isr.text        0x000204         0x38 build/default/debug/main.o
                   0x000204                  __T1Interrupt
- .isr             0x00023e          0x4 default_isr
-                  0x00023e                  __DefaultInterrupt
+ .isr             0x00023c          0x4 default_isr
+                  0x00023c                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x000242          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
-                  0x000242                  __crt_start_mode
-                  0x000242                  __crt_start_mode_normal
- .libm.udivsi3    0x000244         0x20 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
-                  0x000244                  ___udivsi3
+                  0x000240          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
+                  0x000240                  __crt_start_mode
+                  0x000240                  __crt_start_mode_normal
+ .libm.udivsi3    0x000242         0x20 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
+                  0x000242                  ___udivsi3
 
 usercode
  *(usercode)
@@ -300,10 +300,10 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xdde
+.debug_info       0x000000        0xfcc
  *(.debug_info)
- .debug_info      0x000000        0xd51 build/default/debug/main.o
- .debug_info      0x000d51         0x8d c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
+ .debug_info      0x000000        0xf3f build/default/debug/main.o
+ .debug_info      0x000f3f         0x8d c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x15c
@@ -311,18 +311,18 @@ __FDEVOPT1
  .debug_abbrev    0x000000        0x148 build/default/debug/main.o
  .debug_abbrev    0x000148         0x14 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
 
-.debug_line       0x000000        0x160
+.debug_line       0x000000        0x15d
  *(.debug_line)
- .debug_line      0x000000        0x11b build/default/debug/main.o
- .debug_line      0x00011b         0x45 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
+ .debug_line      0x000000        0x118 build/default/debug/main.o
+ .debug_line      0x000118         0x45 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
 
 .debug_frame      0x000000         0x6c
  *(.debug_frame)
  .debug_frame     0x000000         0x6c build/default/debug/main.o
 
-.debug_str        0x000000         0x44
+.debug_str        0x000000         0x4f
  *(.debug_str)
- .debug_str       0x000000         0x44 build/default/debug/main.o
+ .debug_str       0x000000         0x4f build/default/debug/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -1686,20 +1686,20 @@ LOAD /CW/_FSEC
 LOAD default_isr
 
 .debug_pubtypes
-                  0x000038        0x101
+                  0x000038        0x115
  .debug_pubtypes
-                  0x000038        0x101 build/default/debug/main.o
+                  0x000038        0x115 build/default/debug/main.o
 
 __c30_signature
-                  0x000139         0x18
+                  0x00014d         0x18
  __c30_signature
-                  0x000139          0x6 build/default/debug/main.o
+                  0x00014d          0x6 build/default/debug/main.o
  __c30_signature
-                  0x00013f          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
+                  0x000153          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
-                  0x000145          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
+                  0x000159          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
  __c30_signature
-                  0x00014b          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
+                  0x00015f          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(udivsi3.DA_o)
 
 .config_ALTI2C1
                   0x02af2c          0x2
@@ -1732,7 +1732,7 @@ __c30_signature
  .ivt._T1Interrupt
                   0x00001a          0x2 build/default/debug/main.o
 
-.text             0x000264         0x62
- .text            0x000264         0x62 build/default/debug/main.o
-                  0x000264                  _timer1_setup
-                  0x00028c                  _main
+.text             0x000262         0x54
+ .text            0x000262         0x54 build/default/debug/main.o
+                  0x000262                  _timer1_setup
+                  0x000282                  _main
