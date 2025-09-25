@@ -55,7 +55,7 @@ void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
 
 int main(void) {
     
-    uint16_t tx_data[4] = {0x1234, 0x4567, 0x1234,  0x4567};
+    uint16_t tx_data[4] = {1, 0x4567, 0x1234,  0x4567};
     uint16_t rx_data[4];
     
     spi_init();
