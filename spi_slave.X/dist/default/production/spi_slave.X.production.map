@@ -86,11 +86,11 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x150           0x1f8  (504)
-.text                        0x250                0x54            0x7e  (126)
-.dinit                       0x2a4                 0x8             0xc  (12)
+.text                        0x100               0x14a           0x1ef  (495)
+.text                        0x24a                0x58            0x84  (132)
+.dinit                       0x2a2                 0x8             0xc  (12)
 
-                 Total "program" memory used (bytes):          0x282  (642) <1%
+                 Total "program" memory used (bytes):          0x27f  (639) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -132,23 +132,23 @@ External Symbols in Program Memory (by address):
                   0x00013c                  __psv_init
                   0x000152                  __data_init_da
                   0x000152                  __data_init
-                  0x000204                  __SPI1Interrupt
-                  0x00024a                  __DefaultInterrupt
-                  0x000250                  _SPI1Init
-                  0x0002a0                  _main
+                  0x000204                  __SPI1RXInterrupt
+                  0x000244                  __DefaultInterrupt
+                  0x00024a                  _SPI1Init
+                  0x00029e                  _main
                   0x02af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000250                  _SPI1Init
-                  0x00024a                  __DefaultInterrupt
+                  0x00024a                  _SPI1Init
+                  0x000244                  __DefaultInterrupt
                   0x02af00                  __FSEC.sec
-                  0x000204                  __SPI1Interrupt
+                  0x000204                  __SPI1RXInterrupt
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x0002a0                  _main
+                  0x00029e                  _main
 
 Memory Configuration
 
@@ -195,7 +195,7 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x150
+.text             0x000100        0x14a
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
                   0x000100                  __resetPRI
@@ -207,18 +207,18 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x000204         0x46 build/default/production/main.o
-                  0x000204                  __SPI1Interrupt
- .isr             0x00024a          0x4 default_isr
-                  0x00024a                  __DefaultInterrupt
+ .isr.text        0x000204         0x40 build/default/production/main.o
+                  0x000204                  __SPI1RXInterrupt
+ .isr             0x000244          0x4 default_isr
+                  0x000244                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x00024e          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
-                  0x00024e                  __crt_start_mode
-                  0x00024e                  __crt_start_mode_normal
+                  0x000248          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
+                  0x000248                  __crt_start_mode
+                  0x000248                  __crt_start_mode_normal
 
 usercode
  *(usercode)
@@ -255,18 +255,18 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xc6c
+.debug_info       0x000000        0xba4
  *(.debug_info)
- .debug_info      0x000000        0xc6c build/default/production/main.o
+ .debug_info      0x000000        0xba4 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x134
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x134 build/default/production/main.o
 
-.debug_line       0x000000        0x138
+.debug_line       0x000000        0x134
  *(.debug_line)
- .debug_line      0x000000        0x138 build/default/production/main.o
+ .debug_line      0x000000        0x134 build/default/production/main.o
 
 .debug_frame      0x000000         0x74
  *(.debug_frame)
@@ -283,10 +283,10 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x67
+                  0x000000         0x69
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x67 build/default/production/main.o
+                  0x000000         0x69 build/default/production/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1688,15 +1688,15 @@ __c30_signature
 .config_BSLIM     0x02af10          0x2
  .config_BSLIM    0x02af10          0x2 build/default/production/main.o
 
-.ivt._SPI1Interrupt
-                  0x000026          0x2
- .ivt._SPI1Interrupt
-                  0x000026          0x2 build/default/production/main.o
+.ivt._SPI1RXInterrupt
+                  0x000088          0x2
+ .ivt._SPI1RXInterrupt
+                  0x000088          0x2 build/default/production/main.o
 
-.text             0x000250         0x54
- .text            0x000250         0x54 build/default/production/main.o
-                  0x000250                  _SPI1Init
-                  0x0002a0                  _main
+.text             0x00024a         0x58
+ .text            0x00024a         0x58 build/default/production/main.o
+                  0x00024a                  _SPI1Init
+                  0x00029e                  _main
 
-.dinit            0x0002a4          0x8
- .dinit           0x0002a4          0x8 data_init
+.dinit            0x0002a2          0x8
+ .dinit           0x0002a2          0x8 data_init

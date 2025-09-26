@@ -1,6 +1,7 @@
 /*
  * File:   slave.c
  * Author: guilh
+ * 
  *
  */
 
@@ -8,6 +9,8 @@
         
 #define SPI_SS_TRIS      TRISBbits.TRISB0
 #define SPI_SS_PORT      PORTBbits.RB0
+#define LED_TRIS         TRISBbits.TRISB6
+#define LED_LAT          LATBbits.RB6
 
 
 unsigned short spiBufT;		// SPI buffer for transmission
@@ -22,13 +25,14 @@ void SPI1Init(void)
     SPI1CON1bits.SPIEN 		= 0;	// disable SPI port
     SPI1CON1bits.SPISIDL 	= 0; 	// Continue module operation in Idle mode
 
-    SPI1BUFL 				= 0;   	// clear SPI buffer
+     SPI1BUFL               = 0x0001;   	// clear SPI buffer
 
     //IFS0bits.SPI1IF 		= 0;	// clear interrupt flag
     //IEC0bits.SPI1IE 		= 1;	// enable interrupt
+    IEC3bits.SPI1RXIE       = 0;    // Disable interrupt
     IFS3bits.SPI1RXIF       = 0;    // clear interrupt flag
-    SPI1IMSKLbits.SPITBFEN  = 1;    // buffer rx full
-    IEC3bits.SPI1RXIE       = 1;       // enable interrupt
+    //SPI1IMSKLbits.SPITBFEN  = 1;    // buffer rx full
+    IEC3bits.SPI1RXIE       = 1;    // enable interrupt
 
     SPI1CON1bits.DISSDO		= 0;	// SDOx pin is controlled by the module
     SPI1CON1bits.MODE16 	= 1;	// set in 16-bit mode, clear in 8-bit mode
@@ -42,6 +46,9 @@ void SPI1Init(void)
 
     SPI_SS_PORT				= 1;	//
 	SPI_SS_TRIS				= 1;	// set SS as input
+    LED_TRIS                = 0;    // LED pin 15
+    LED_LAT                 = 0;
+    
     
     
    RPINR20bits.SDI1R = 26;        // MOSI -> RP26 (P2)
@@ -55,17 +62,15 @@ void SPI1Init(void)
 
     
 void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void) {
-    IFS3bits.SPI1RXIF = 0;  // clean interrup flag
-
-        if (!SPI1STATLbits.SPIROV) { // check overflow
-
-                My_Slave_Array[spiCount] = SPI1BUFL; // read master com
-                spiCount++;
-
-
+        IFS3bits.SPI1RXIF = 0;  // clean interrup flag
+        LED_LAT = 1;
+        if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
             while (SPI1STATLbits.SPITBF); // espera buffer livre
-            SPI1BUFL = 0xFFFF;
-                    ;             // envia de volta
+            My_Slave_Array[spiCount] = SPI1BUFL; // read master com
+            spiCount++;
+            SPI1BUFL = 0xFFFF;             // envia de volta
+        }else{
+            SPI1STATLbits.SPIROV = 0; // clean overflow
         }
 }
 
