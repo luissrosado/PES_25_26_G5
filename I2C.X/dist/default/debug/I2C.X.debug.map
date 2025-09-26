@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.00 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.01 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.02 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.03 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.04 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.05 \
-  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00001628.06 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006988.00 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006988.01 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006988.02 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006988.03 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006988.04 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006988.05 \
+  -TC:\\Users\\rodis\\AppData\\Local\\Temp\\tmp00006988.06 \
   -p24FJ256GA702 \
   --mdfp=C:/Users/rodis/.mchp_packs/Microchip/PIC24F-GA-GB_DFP/1.10.375/xc16 \
   -o \
@@ -62,8 +62,6 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_
                               c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o) (__data_init_da)
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
                               (__crt_start_mode_normal)
-c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                              build/default/debug/main.o (___delay32)
 
 
 Selected CodeGuard Options:
@@ -98,10 +96,9 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a               0x16c           0x222  (546)
-.init.delay32                0x376                0x1c            0x2a  (42)
+.text                        0x20a               0x1ae           0x285  (645)
 
-                 Total "program" memory used (bytes):          0x3db  (987) <1%
+                 Total "program" memory used (bytes):          0x414  (1044) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -135,29 +132,27 @@ External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
-                  0x000152                  __data_init_da
                   0x000152                  __data_init
+                  0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
                   0x00020a                  _I2C_init
                   0x00021c                  _I2C_Read_INA
-                  0x0002de                  _I2C_Calibrate_INA
-                  0x000346                  _main
-                  0x000376                  ___delay32
+                  0x000302                  _I2C_Calibrate_INA
+                  0x00039a                  _main
                   0x02af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0002de                  _I2C_Calibrate_INA
+                  0x000302                  _I2C_Calibrate_INA
                   0x00021c                  _I2C_Read_INA
                   0x00020a                  _I2C_init
                   0x000204                  __DefaultInterrupt
                   0x02af00                  __FSEC.sec
-                  0x000376                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x000346                  _main
+                  0x00039a                  _main
 
 Memory Configuration
 
@@ -299,26 +294,26 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xd55
+.debug_info       0x000000        0xbc7
  *(.debug_info)
- .debug_info      0x000000        0xd55 build/default/debug/main.o
+ .debug_info      0x000000        0xbc7 build/default/debug/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x12f
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x12f build/default/debug/main.o
 
-.debug_line       0x000000        0x12f
+.debug_line       0x000000        0x131
  *(.debug_line)
- .debug_line      0x000000        0x12f build/default/debug/main.o
+ .debug_line      0x000000        0x131 build/default/debug/main.o
 
 .debug_frame      0x000000         0x7c
  *(.debug_frame)
  .debug_frame     0x000000         0x7c build/default/debug/main.o
 
-.debug_str        0x000000         0x5e
+.debug_str        0x000000         0x55
  *(.debug_str)
- .debug_str       0x000000         0x5e build/default/debug/main.o
+ .debug_str       0x000000         0x55 build/default/debug/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -1680,20 +1675,18 @@ LOAD /CW/_FSEC
 LOAD default_isr
 
 .debug_pubtypes
-                  0x000018         0xf7
+                  0x000018         0xda
  .debug_pubtypes
-                  0x000018         0xf7 build/default/debug/main.o
+                  0x000018         0xda build/default/debug/main.o
 
 __c30_signature
-                  0x00010f         0x18
+                  0x0000f2         0x12
  __c30_signature
-                  0x00010f          0x6 build/default/debug/main.o
+                  0x0000f2          0x6 build/default/debug/main.o
  __c30_signature
-                  0x000115          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
+                  0x0000f8          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
-                  0x00011b          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
- __c30_signature
-                  0x000121          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
+                  0x0000fe          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
 
 .config_ALTI2C1
                   0x02af2c          0x2
@@ -1721,13 +1714,9 @@ __c30_signature
 .config_BSLIM     0x02af10          0x2
  .config_BSLIM    0x02af10          0x2 build/default/debug/main.o
 
-.text             0x00020a        0x16c
- .text            0x00020a        0x16c build/default/debug/main.o
+.text             0x00020a        0x1ae
+ .text            0x00020a        0x1ae build/default/debug/main.o
                   0x00020a                  _I2C_init
                   0x00021c                  _I2C_Read_INA
-                  0x0002de                  _I2C_Calibrate_INA
-                  0x000346                  _main
-
-.init.delay32     0x000376         0x1c
- .init.delay32    0x000376         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                  0x000376                  ___delay32
+                  0x000302                  _I2C_Calibrate_INA
+                  0x00039a                  _main
