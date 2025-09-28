@@ -1,0 +1,4 @@
+Instalar python 3
+
+packages:
+pillow, serial, pyserial
