@@ -6,7 +6,8 @@
  */
 
 #include "config.h"
-        
+
+#define SPI_SS_ANS       ANSELBbits.ANSB 
 #define SPI_SS_TRIS      TRISBbits.TRISB0
 #define SPI_SS_PORT      PORTBbits.RB0
 #define LED_TRIS         TRISBbits.TRISB6
@@ -44,6 +45,7 @@ void SPI1Init(void)
 
     SPI1CON2 				= 0;	// non-framed mode
 
+    SPI_SS_ANS              = 0;    // define as digital
     SPI_SS_PORT				= 1;	//
 	SPI_SS_TRIS				= 1;	// set SS as input
     LED_TRIS                = 0;    // LED pin 15
