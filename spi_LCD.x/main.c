@@ -143,6 +143,8 @@ int main ( void )
     printf("olaaaaaaa");
     while(1)
     {
+        
+        printf("1");
         LATBbits.LATB1 = 1;
         __delay_ms(1000);
         spi_com(tx_data, rx_data, 4);

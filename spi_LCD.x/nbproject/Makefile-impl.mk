@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=spi_slave_LCD.x
+PROJECTNAME=spi_LCD.x
 
 # Active Configuration
 DEFAULTCONF=default

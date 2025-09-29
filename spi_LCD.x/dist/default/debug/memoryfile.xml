@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/debug/pic24fj1024gb610_pim.x.debug.elf">
+  <executable name="dist/default/debug/spi_LCD.x.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>32768</length>
@@ -11,8 +11,8 @@
     <memory name="program">
       <units>bytes</units>
       <length>1056000</length>
-      <used>9960</used>
-      <free>1046040</free>
+      <used>12111</used>
+      <free>1043889</free>
     </memory>
   </executable>
 </project>
