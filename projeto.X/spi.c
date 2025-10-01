@@ -6,9 +6,8 @@
  *
  * Created on October 1, 2025, 4:08 PM
  */
-
-uint16_t My_Slave_Array[4];	// SPI buffer for Receiving
-uint16_t tx_data[4] = {0xA000, 0xB000, 0xC000,  0xD000};
+uint16_t rx_data[4];	// SPI buffer for Receiving
+uint16_t tx_data[4] = {0x0000, 0x0000, 0x0000,  0x0000};
 
 void SPI1Init(void)
 {
@@ -70,8 +69,7 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
         for (uint8_t i = 0; i < 4; i++) {
             while (SPI1STATLbits.SPITBF);
             SPI1BUFL = tx_data[i];
-            My_Slave_Array[i] = SPI1BUFL;        
-            spiCount++;   
+            rx_data = SPI1BUFL;          
         }            
         }else{
             SPI1STATLbits.SPIROV = 0; // clean overflow

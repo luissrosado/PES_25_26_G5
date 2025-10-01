@@ -45,7 +45,7 @@
 
 // FICD
 #pragma config ICS = PGD2               // ICD Communication Channel Select bits (Communicate on PGEC1 and PGED1)
-#pragma config JTAGEN = OFF              // JTAG Enable bit (JTAG is enabled)
+#pragma config JTAGEN = OFF              // JTAG Enable bit (JTAG is disabled)
 
 // FDEVOPT1
 #pragma config ALTCMPI = DISABLE        // Alternate Comparator Input Enable bit (C1INC, C2INC, and C3INC are on their standard pin locations)
@@ -56,6 +56,8 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
+#include <xc.h>
+
 #define FOSC 8000000UL
 #define FCY FOSC/2
 
@@ -63,3 +65,7 @@
 #include <stdint.h>
 #include <libpic30.h>
 #include "p24FJ256GA702.h"
+#include "spi.h"
+#include "i2c.h"
+#include "pwm.h"
+#include "waketimer.h"

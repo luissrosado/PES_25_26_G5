@@ -1,4 +1,3 @@
-#ifndef
 
 #define SPI_SS_ANS       ANSELBbits.ANSB3 
 #define SPI_SS_TRIS      TRISBbits.TRISB3
@@ -11,4 +10,3 @@ void SPI1Init(void);
 void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void);
 
 
-#endif

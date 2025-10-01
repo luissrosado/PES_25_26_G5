@@ -6,6 +6,9 @@
                    projectFiles="true">
       <itemPath>spi.h</itemPath>
       <itemPath>config.h</itemPath>
+      <itemPath>i2c.h</itemPath>
+      <itemPath>pwm.h</itemPath>
+      <itemPath>waketimer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -21,6 +24,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>spi.c</itemPath>
+      <itemPath>i2c.c</itemPath>
+      <itemPath>pwm.c</itemPath>
+      <itemPath>waketimer.c</itemPath>
+      <itemPath>main.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
