@@ -88,7 +88,7 @@ void spi_init()
    
 
 }
-
+/*
 void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
 {
     LATBbits.LATB1 = 0;
@@ -100,21 +100,21 @@ void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
     rx_data[1] = SPI1BUFL;               // read the received value 
     //}
     LATBbits.LATB1 = 1;
-}
-/*
+}*/
+
 void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
 {
     LATBbits.LATB1 = 0;   // CS baixo
     __delay_us(5);
 
-    for (uint16_t i = 0; i < length; i++) {
+    for (uint16_t i = 0; i < length - 1; i++) {
         SPI1BUFL = data[i];               // envia no MOSI
         while(!SPI1STATLbits.SPIRBF);     // espera terminar
-        rx_data[i] = SPI1BUFL;            // lê MISO
+        rx_data[i + 1] = SPI1BUFL;            // lê MISO
     }
 
     LATBbits.LATB1 = 1;   // CS alto
-}*/
+}
 
 
 
@@ -168,13 +168,11 @@ int main ( void )
         __delay_ms(1000);
         spi_com(tx_data, rx_data, 4);
         printf("\f");
-        printf("%04X", rx_data[1]);
-        __delay_ms(1000);
-        /*for (uint16_t i = 0; i < 4; i++){
-            printf("%04X %d", rx_data[i], i);
+        for (uint16_t i = 0; i < 3; i++){
+            printf("%04X %d", rx_data[i+], i+);
             __delay_ms(1000);
             printf("\f");
-        }*/
+        }
     }
     
 }
