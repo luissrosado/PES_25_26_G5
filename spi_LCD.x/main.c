@@ -77,6 +77,9 @@ void spi_init()
    // chip select pin RB1  P24
    ANSELBbits.ANSB1 = 0;
    TRISBbits.TRISB1 = 0;
+   
+   ANSELGbits.ANSG7 = 0;
+   ANSELGbits.ANSG8 = 0;
 
    
    SPI1CON1Lbits.SPIEN = 1;      // Enable the spi peripheral
@@ -98,6 +101,22 @@ void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
     //}
     LATBbits.LATB1 = 1;
 }
+/*
+void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
+{
+    LATBbits.LATB1 = 0;   // CS baixo
+    __delay_us(5);
+
+    for (uint16_t i = 0; i < length; i++) {
+        SPI1BUFL = data[i];               // envia no MOSI
+        while(!SPI1STATLbits.SPIRBF);     // espera terminar
+        rx_data[i] = SPI1BUFL;            // lê MISO
+    }
+
+    LATBbits.LATB1 = 1;   // CS alto
+}*/
+
+
 
 
 int main ( void )
@@ -149,8 +168,13 @@ int main ( void )
         __delay_ms(1000);
         spi_com(tx_data, rx_data, 4);
         printf("\f");
-        printf("%d", rx_data[1]);
+        printf("%04X", rx_data[1]);
         __delay_ms(1000);
+        /*for (uint16_t i = 0; i < 4; i++){
+            printf("%04X %d", rx_data[i], i);
+            __delay_ms(1000);
+            printf("\f");
+        }*/
     }
     
 }

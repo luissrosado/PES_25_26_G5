@@ -15,7 +15,8 @@
 
 
 unsigned short spiBufT;		// SPI buffer for transmission
-unsigned short My_Slave_Array;	// SPI buffer for Receiving
+uint16_t My_Slave_Array;	// SPI buffer for Receiving
+uint16_t tx_data[4] = {0xA000, 0xB000, 0xC000,  0xD000};
 
 unsigned char spiCount=0;		// variable for how many data has been received from SPI bus
 
@@ -80,7 +81,7 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
             while (SPI1STATLbits.SPITBF); // espera buffer livre
             My_Slave_Array = SPI1BUFL; // read master com
             spiCount++;
-            SPI1BUFL = 3;             // envia de volta
+            SPI1BUFL = 0xB000;             // envia de volta
         }else{
             SPI1STATLbits.SPIROV = 0; // clean overflow
         }
@@ -88,9 +89,26 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
         LED_LAT = 0;
 }
 
+/*
+void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
+        IFS3bits.SPI1RXIF = 0;  // clean interrup flag
+        LED_LAT = 1;
+        if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
+        for (uint8_t i = 0; i < 4; i++) {
+            while (SPI1STATLbits.SPITBF);
+            SPI1BUFL = tx_data[i];
+            My_Slave_Array[i] = SPI1BUFL;        
+            spiCount++;   
+        }            
+        }else{
+            SPI1STATLbits.SPIROV = 0; // clean overflow
+        }
+        __delay_ms(2000);
+        LED_LAT = 0;
+}*/
+
 
 int main(void){
     SPI1Init();
-    SPI1BUFL = 2;
     while(1);
 }
