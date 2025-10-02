@@ -7,6 +7,8 @@
  * Created on October 1, 2025, 4:35 PM
  */
 
+#include "waketime.h"
+#include <xc.h>
 
 void timer1_setup(uint16_t period)
 {

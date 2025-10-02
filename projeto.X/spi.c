@@ -6,6 +6,10 @@
  *
  * Created on October 1, 2025, 4:08 PM
  */
+
+#include "spi.h"
+#include <xc.h>
+
 uint16_t rx_data[4];	// SPI buffer for Receiving
 uint16_t tx_data[4] = {0x0000, 0x0000, 0x0000,  0x0000};
 
@@ -66,11 +70,11 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
         IFS3bits.SPI1RXIF = 0;  // clean interrup flag
         LED_LAT = 1;
         if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
-        for (uint8_t i = 0; i < 4; i++) {
-            while (SPI1STATLbits.SPITBF);
-            SPI1BUFL = tx_data[i];
-            rx_data = SPI1BUFL;          
-        }            
+            for (uint8_t i = 0; i < 4; i++) {
+                while (SPI1STATLbits.SPITBF);
+                SPI1BUFL = tx_data[i];
+                rx_data[i] = SPI1BUFL;          
+            }            
         }else{
             SPI1STATLbits.SPIROV = 0; // clean overflow
         }

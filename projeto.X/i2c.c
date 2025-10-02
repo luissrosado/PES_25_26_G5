@@ -7,6 +7,8 @@
  * Created on October 1, 2025, 4:27 PM
  */
 
+#include "i2c.h"
+#include <xc.h>
 
 void I2C_init()
 {
