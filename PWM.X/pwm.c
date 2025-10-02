@@ -18,7 +18,7 @@ void main(void) {
     
     OSCCONbits.IOLOCK = 0b1;        // IO Lock for PPS is active
     
-    uint16_t aux = 99;
+    uint16_t aux = 71;
     PWM_init(3, aux);
     
     while(1){
