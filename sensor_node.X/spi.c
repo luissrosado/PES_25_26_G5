@@ -80,22 +80,19 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
         LED_LAT = 0;
 }*/
 
-uint8_t i = 0;
+
 
 void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
-        
         IFS3bits.SPI1RXIF = 0;  // clean interrup flag
         LED_LAT = 1;
         if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
-        
-                while (SPI1STATLbits.SPITBF);
-                SPI1BUFL = tx_data[i];
-                rx_data[i] = SPI1BUFL;                      
+            while (SPI1STATLbits.SPITBF); // espera buffer livre
+            rx_data[1] = SPI1BUFL; // read master com
+            SPI1BUFL = tx_data[3];             // envia de volta
         }else{
             SPI1STATLbits.SPIROV = 0; // clean overflow
         }
-        if(i == 3) i=0;
-        i++;
+        __delay_ms(2000);
         LED_LAT = 0;
 }
 

@@ -369,6 +369,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-2aeff"/>
         <property key="poweroptions.powerenable" value="true"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/rodis/Documents/MEEC 1º ano/S1/SEP/PES_25_26_G5/sensor_node.X/debug/default/sensor_node_ptg"/>
         <property key="programmerToGoImageName" value="sensor_node_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

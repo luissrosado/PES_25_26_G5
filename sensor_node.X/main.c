@@ -40,9 +40,9 @@ int main(void) {
         reading_raw[0] = I2C_Read_INA(INA_ADDR, INA_POWER) * 0.00001526 * 20;
         reading_raw[1] = I2C_Read_INA(INA_ADDR, INA_CURRENT) * 0.00001526;
         reading_raw[2] = (I2C_Read_INA(INA_ADDR, INA_VOLTAGE) >> 3) * 4;
-        for(uint8_t i = 0; i<3 ; i++){
-        tx_data[i+1] = reading_raw[i];
-        }
+        tx_data[1] = reading_raw[0];
+        tx_data[2] = reading_raw[1];
+        tx_data[3] = reading_raw[2];
     }
     
     return 0;

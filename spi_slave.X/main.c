@@ -54,19 +54,19 @@ void SPI1Init(void)
 }
 
     
-void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void) {
-    IFS3bits.SPI1RXIF = 0;  // clean interrup flag
-
-        if (!SPI1STATLbits.SPIROV) { // check overflow
-
-                My_Slave_Array[spiCount] = SPI1BUFL; // read master com
-                spiCount++;
-
-
+void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
+        IFS3bits.SPI1RXIF = 0;  // clean interrup flag
+        LED_LAT = 1;
+        if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
             while (SPI1STATLbits.SPITBF); // espera buffer livre
-            SPI1BUFL = 0xFFFF;
-                    ;             // envia de volta
+            My_Slave_Array = SPI1BUFL; // read master com
+            spiCount++;
+            SPI1BUFL = 0xB000;             // envia de volta
+        }else{
+            SPI1STATLbits.SPIROV = 0; // clean overflow
         }
+        __delay_ms(2000);
+        LED_LAT = 0;
 }
 
 
