@@ -34,3 +34,4 @@ MP_CC_DIR="C:\Program Files\Microchip\xc16\v2.10\bin"
 MP_AS_DIR="C:\Program Files\Microchip\xc16\v2.10\bin"
 MP_LD_DIR="C:\Program Files\Microchip\xc16\v2.10\bin"
 MP_AR_DIR="C:\Program Files\Microchip\xc16\v2.10\bin"
+DFP_DIR=C:/Users/rodis/.mchp_packs/Microchip/PIC24F-GA-GB_DFP/1.10.375

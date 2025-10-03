@@ -1,3 +1,5 @@
+#ifndef CONFIG_BITS_H
+#define	CONFIG_BITS_H
 
 // PIC24FJ256GA702 Configuration Bit Settings
 
@@ -53,5 +55,4 @@
 #pragma config SOSCHP = ON              // SOSC High Power Enable bit (valid only when SOSCSEL = 1 (Enable SOSC high power mode (default))
 #pragma config ALTI2C1 = ALTI2CEN       // Alternate I2C pin Location (SDA1 and SCL1 on RB9 and RB8)
 
-// #pragma config statements should precede project file includes.
-// Use project enums instead of #define for ON and OFF.
+#endif CONFIG_BITS_H

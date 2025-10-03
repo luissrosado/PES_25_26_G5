@@ -26,18 +26,25 @@
  * Revision history: 
  */
 
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
+
+
 // This is a guard condition so that contents of this file are not included
 // more than once.  
 #ifndef SENSOR_NODE_H
 #define	SENSOR_NODE_H
 
+
 #define FOSC 8000000UL
 #define FCY FOSC/2
 
+#include "config_bits.h"
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 #include <libpic30.h>
 #include "p24FJ256GA702.h"
+#include <stdint.h>
 
 // TODO Insert C++ class definitions if appropriate
 
@@ -105,5 +112,5 @@ extern "C" {
 }
 #endif /* __cplusplus */
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#endif SENSOR_NODE_H
 

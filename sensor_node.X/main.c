@@ -5,7 +5,6 @@
  * Created on 2 de Outubro de 2025, 16:28
  */
 
-
 #include "sensor_node.h"
 
 void init_all()
