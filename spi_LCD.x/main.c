@@ -88,8 +88,7 @@ void spi_init()
    
 
 }
-/*
-void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
+void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length, int i)
 {
     LATBbits.LATB1 = 0;
     __delay_us(5);// select slave
@@ -97,12 +96,12 @@ void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
     //{
     SPI1BUFL  = data[1];                 // write to buffer for Transmit
     while(!SPI1STATLbits.SPIRBF);       // Wait until tx is completed
-    rx_data[1] = SPI1BUFL;               // read the received value 
+    rx_data[i] = SPI1BUFL;               // read the received value 
     //}
     LATBbits.LATB1 = 1;
-}*/
+}
 
-void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
+/*void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
 {
     LATBbits.LATB1 = 0;   // CS baixo
     __delay_us(5);
@@ -114,7 +113,7 @@ void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
     }
 
     LATBbits.LATB1 = 1;   // CS alto
-}
+}*/
 
 
 
@@ -157,19 +156,29 @@ int main ( void )
     
     uint16_t tx_data[4] = {0xFFFF, 0xFFFF, 0x1234,  0x4567};
     uint16_t rx_data[4];
+    char metrics[3];
+    metrics[0] = 'W';
+    metrics[1] = 'A';
+    metrics[2] = 'V';
     
     spi_init();
-    printf("olaaaaaaa");
+    printf("Bem-vindo");
+    __delay_ms(1000);
+    printf("\f");
+    
     while(1)
     {
         
-        printf("1");
+        printf("Nova Medida:");
         LATBbits.LATB1 = 1;
         __delay_ms(1000);
-        spi_com(tx_data, rx_data, 4);
+        for(int i = 0; i<3; i++){
+        spi_com(tx_data, rx_data, 4, i);
+        __delay_ms(200);
+        }
         printf("\f");
         for (uint16_t i = 0; i < 3; i++){
-            printf("%04X %d", rx_data[i+], i+);
+            printf("%04X %c", rx_data[i+1], metrics[i]);
             __delay_ms(1000);
             printf("\f");
         }
