@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/debug/sensor_node.X.debug.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>16384</length>
+      <used>94</used>
+      <free>16290</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>263424</length>
+      <used>3624</used>
+      <free>259800</free>
+    </memory>
+  </executable>
+</project>

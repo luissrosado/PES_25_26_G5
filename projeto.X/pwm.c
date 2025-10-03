@@ -7,6 +7,8 @@
  * Created on October 1, 2025, 4:31 PM
  */
 
+#include "pwm.h"
+#include <xc.h>
 
 void PWM_init(uint16_t channel, uint16_t dcyc){
     if(dcyc > 100)  dcyc=100;       // avoid malfunctions

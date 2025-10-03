@@ -32,7 +32,7 @@
 // FWDT
 #pragma config WDTPS = PS32768          // Watchdog Timer Postscaler bits (1:32,768)
 #pragma config FWPSA = PR128            // Watchdog Timer Prescaler bit (1:128)
-#pragma config FWDTEN = ON              // Watchdog Timer Enable bits (WDT Enabled)
+#pragma config FWDTEN = ON             // Watchdog Timer Enable bits (WDT and SWDTEN disabled)
 #pragma config WINDIS = OFF             // Watchdog Timer Window Enable bit (Watchdog Timer in Non-Window mode)
 #pragma config WDTWIN = WIN25           // Watchdog Timer Window Select bits (WDT Window is 25% of WDT period)
 #pragma config WDTCMX = WDTCLK          // WDT MUX Source Select bits (WDT clock source is determined by the WDTCLK Configuration bits)
@@ -44,8 +44,8 @@
 #pragma config DNVPEN = ENABLE          // Downside Voltage Protection Enable bit (Downside protection enabled using ZPBOR when BOR is inactive)
 
 // FICD
-#pragma config ICS = PGD2               // ICD Communication Channel Select bits (Communicate on PGEC1 and PGED1)
-#pragma config JTAGEN = OFF              // JTAG Enable bit (JTAG is disabled)
+#pragma config ICS = PGD2               // ICD Communication Channel Select bits (Communicate on PGEC2 and PGED2)
+#pragma config JTAGEN = OFF             // JTAG Enable bit (JTAG is disabled)
 
 // FDEVOPT1
 #pragma config ALTCMPI = DISABLE        // Alternate Comparator Input Enable bit (C1INC, C2INC, and C3INC are on their standard pin locations)
@@ -57,15 +57,3 @@
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
-
-#define FOSC 8000000UL
-#define FCY FOSC/2
-
-#include <xc.h>
-#include <stdint.h>
-#include <libpic30.h>
-#include "p24FJ256GA702.h"
-#include "spi.h"
-#include "i2c.h"
-#include "pwm.h"
-#include "waketimer.h"

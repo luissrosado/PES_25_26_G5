@@ -53,8 +53,6 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_
                               c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o) (__data_init_da)
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
                               (__crt_start_mode_normal)
-c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                              build/default/production/pwm.o (___delay32)
 
 
 Selected CodeGuard Options:
@@ -89,10 +87,9 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x10a           0x18f  (399)
-.text                        0x20a               0x1f4           0x2ee  (750)
-.init.delay32                0x3fe                0x1c            0x2a  (42)
+.text                        0x20a               0x1d8           0x2c4  (708)
 
-                 Total "program" memory used (bytes):          0x4a7  (1191) <1%
+                 Total "program" memory used (bytes):          0x453  (1107) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -125,7 +122,6 @@ External Symbols in Program Memory (by address):
                   0x00020a                  _PWM_init
                   0x0002f6                  _PWM_updDcyc
                   0x0003be                  _main
-                  0x0003fe                  ___delay32
                   0x02af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
@@ -134,7 +130,6 @@ External Symbols in Program Memory (by name):
                   0x0002f6                  _PWM_updDcyc
                   0x000204                  __DefaultInterrupt
                   0x02af00                  __FSEC.sec
-                  0x0003fe                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
@@ -253,9 +248,9 @@ __FDEVOPT1
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x12f build/default/production/pwm.o
 
-.debug_line       0x000000        0x163
+.debug_line       0x000000        0x15e
  *(.debug_line)
- .debug_line      0x000000        0x163 build/default/production/pwm.o
+ .debug_line      0x000000        0x15e build/default/production/pwm.o
 
 .debug_frame      0x000000         0x62
  *(.debug_frame)
@@ -1636,15 +1631,13 @@ LOAD default_isr
                   0x000018        0x194 build/default/production/pwm.o
 
 __c30_signature
-                  0x0001ac         0x18
+                  0x0001ac         0x12
  __c30_signature
                   0x0001ac          0x6 build/default/production/pwm.o
  __c30_signature
                   0x0001b2          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
                   0x0001b8          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
- __c30_signature
-                  0x0001be          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
 
 .config_ALTI2C1
                   0x02af2c          0x2
@@ -1672,12 +1665,8 @@ __c30_signature
 .config_BSLIM     0x02af10          0x2
  .config_BSLIM    0x02af10          0x2 build/default/production/pwm.o
 
-.text             0x00020a        0x1f4
- .text            0x00020a        0x1f4 build/default/production/pwm.o
+.text             0x00020a        0x1d8
+ .text            0x00020a        0x1d8 build/default/production/pwm.o
                   0x00020a                  _PWM_init
                   0x0002f6                  _PWM_updDcyc
                   0x0003be                  _main
-
-.init.delay32     0x0003fe         0x1c
- .init.delay32    0x0003fe         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                  0x0003fe                  ___delay32
