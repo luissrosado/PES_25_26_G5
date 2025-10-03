@@ -55,4 +55,4 @@
 #pragma config SOSCHP = ON              // SOSC High Power Enable bit (valid only when SOSCSEL = 1 (Enable SOSC high power mode (default))
 #pragma config ALTI2C1 = ALTI2CEN       // Alternate I2C pin Location (SDA1 and SCL1 on RB9 and RB8)
 
-#endif CONFIG_BITS_H
+#endif /*CONFIG_BITS_H*/

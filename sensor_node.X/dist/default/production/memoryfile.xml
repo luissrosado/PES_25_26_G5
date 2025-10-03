@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/debug/sensor_node.X.debug.elf">
+  <executable name="dist/default/production/sensor_node.X.production.elf">
     <memory name="data">
       <units>bytes</units>
       <length>16384</length>
-      <used>94</used>
-      <free>16290</free>
+      <used>18</used>
+      <free>16366</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>263424</length>
-      <used>3624</used>
-      <free>259800</free>
+      <used>3570</used>
+      <free>259854</free>
     </memory>
   </executable>
 </project>

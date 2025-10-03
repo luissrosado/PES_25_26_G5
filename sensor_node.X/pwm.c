@@ -20,6 +20,9 @@ void PWM_init(uint16_t channel, uint16_t dcyc){
         OC1CON1 = 0x00;                 // good practice to clear off the control bits initially 
         OC1CON2 = 0x00;                 // ^^^
         // mind that: OC1CON1bits.OCM = 0b000;  <-> channel is disabled
+        
+        TRISBbits.TRISB6 = 0b0;         // RB6 (pin 15 - remappable) defined as output
+        RPOR3bits.RP6R = 13;            // defined RB10 as Output Compare 1 (OC1)
 
         OC1CON1bits.OCSIDL = 0b0;       // OC1 continues to operate in Idle mode
         OC1CON1bits.OCTSEL = 0b111;     // Peripheral Clock (Fcy) selected
@@ -39,6 +42,9 @@ void PWM_init(uint16_t channel, uint16_t dcyc){
         OC2CON2 = 0x00;                 // ^^^
         // mind that: OC2CON1bits.OCM = 0b000;  <-> channel is disabled
         
+        TRISBbits.TRISB7 = 0b0;         // RB6 (pin 15 - remappable) defined as output
+        RPOR3bits.RP7R = 14;            // defined RB10 as Output Compare 1 (OC1)
+        
         OC2CON1bits.OCSIDL = 0b0;       // OC1 continues to operate in Idle mode
         OC2CON1bits.OCTSEL = 0b111;     // Peripheral Clock (Fcy) selected
         
@@ -57,6 +63,9 @@ void PWM_init(uint16_t channel, uint16_t dcyc){
         OC3CON2 = 0x00;                 // ^^^
         // mind that: OC3CON1bits.OCM = 0b000;  <-> channel is disabled
 
+        TRISBbits.TRISB5 = 0b0;         // RB6 (pin 15 - remappable) defined as output
+        RPOR2bits.RP5R = 15;            // defined RB10 as Output Compare 1 (OC1)
+        
         OC3CON1bits.OCSIDL = 0b0;       // OC1 continues to operate in Idle mode
         OC3CON1bits.OCTSEL = 0b111;     // Peripheral Clock (Fcy) selected
         
@@ -75,6 +84,7 @@ void PWM_init(uint16_t channel, uint16_t dcyc){
          * um pino ligar-se e um LED acender
          *  */
     }
+    
 }
 
 void PWM_updDcyc(uint16_t channel, uint16_t dcyc){

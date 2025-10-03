@@ -9,8 +9,8 @@
 
 #include "sensor_node.h"
 
-uint16_t rx_data[4];	// SPI buffer for Receiving
-uint16_t tx_data[4] = {0x0000, 0x0000, 0x0000,  0x0000};
+extern uint16_t rx_data[4];	// SPI buffer for Receiving
+extern uint16_t tx_data[4];
 
 void SPI1Init(void)
 {
@@ -63,7 +63,7 @@ void SPI1Init(void)
     INTCON2bits.GIE = 1;
 }
 
-
+/*
 // implementar byte dummy 
 void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
         IFS3bits.SPI1RXIF = 0;  // clean interrup flag
@@ -77,7 +77,25 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
         }else{
             SPI1STATLbits.SPIROV = 0; // clean overflow
         }
-        __delay_ms(2000);
+        LED_LAT = 0;
+}*/
+
+uint8_t i = 0;
+
+void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
+        
+        IFS3bits.SPI1RXIF = 0;  // clean interrup flag
+        LED_LAT = 1;
+        if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
+        
+                while (SPI1STATLbits.SPITBF);
+                SPI1BUFL = tx_data[i];
+                rx_data[i] = SPI1BUFL;                      
+        }else{
+            SPI1STATLbits.SPIROV = 0; // clean overflow
+        }
+        if(i == 3) i=0;
+        i++;
         LED_LAT = 0;
 }
 

@@ -39,7 +39,6 @@
 #define FOSC 8000000UL
 #define FCY FOSC/2
 
-#include "config_bits.h"
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 #include <libpic30.h>
@@ -64,12 +63,13 @@
 #define LED_LAT          LATBbits.LATB14
 
 
+
 void I2C_init();
 uint16_t I2C_Read_INA(uint8_t slave_addr, uint8_t register_addr);
 void I2C_Calibrate_INA(uint8_t slave_addr, uint16_t cal);
 
-void timer1_setup(uint16_t period);
-void __attribute__((__interrupt__, __shadow__)) _T1Interrupt(void);
+//void timer1_setup(uint16_t period);
+//void __attribute__((__interrupt__, __shadow__)) _T1Interrupt(void);
 
 void PWM_init(uint16_t channel, uint16_t dcyc);
 void PWM_updDcyc(uint16_t channel, uint16_t dcyc);
@@ -112,5 +112,5 @@ extern "C" {
 }
 #endif /* __cplusplus */
 
-#endif SENSOR_NODE_H
+#endif /*SENSOR_NODE_H*/
 
