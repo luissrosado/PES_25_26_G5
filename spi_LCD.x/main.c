@@ -88,33 +88,18 @@ void spi_init()
    
 
 }
-/*
-void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
+
+void spi_com(uint16_t data, uint16_t *rx_data)
 {
     LATBbits.LATB1 = 0;
     __delay_us(5);// select slave
-    //for(uint16_t i = 0; i < length; i++)
-    //{
-    SPI1BUFL  = data[1];                 // write to buffer for Transmit
+    SPI1BUFL  = data;                 // write to buffer for Transmit
     while(!SPI1STATLbits.SPIRBF);       // Wait until tx is completed
-    rx_data[1] = SPI1BUFL;               // read the received value 
-    //}
+    rx_data[data] = SPI1BUFL;               // read the received value 
     LATBbits.LATB1 = 1;
-}*/
-
-void spi_com(uint16_t *data, uint16_t *rx_data, uint16_t length)
-{
-    LATBbits.LATB1 = 0;   // CS baixo
-    __delay_us(5);
-
-    for (uint16_t i = 0; i < length - 1; i++) {
-        SPI1BUFL = data[i];               // envia no MOSI
-        while(!SPI1STATLbits.SPIRBF);     // espera terminar
-        rx_data[i + 1] = SPI1BUFL;            // lê MISO
-    }
-
-    LATBbits.LATB1 = 1;   // CS alto
 }
+
+
 
 
 
@@ -155,21 +140,34 @@ int main ( void )
     /* Clear the screen */
     printf( "\f" );   
     
-    uint16_t tx_data[4] = {0xFFFF, 0xFFFF, 0x1234,  0x4567};
+    uint16_t select_message = 0;
+    /* 0 -- power, 1 -- corrente, 2 -- tensao*/
     uint16_t rx_data[4];
+    char metrics[4];
+    metrics[0] = 'w';
+    metrics[1] = 'A';
+    metrics[2] = 'm';
+    metrics[3] = 'V';
     
     spi_init();
     printf("olaaaaaaa");
     while(1)
     {
-        
-        printf("1");
+        printf("\f");
+        printf("Nova medicao");
         LATBbits.LATB1 = 1;
         __delay_ms(1000);
-        spi_com(tx_data, rx_data, 4);
+        for(select_message = 0; select_message < 4; select_message++){
+            spi_com(select_message, rx_data);
+            __delay_ms(3000);
+        }
         printf("\f");
         for (uint16_t i = 0; i < 3; i++){
-            printf("%04X %d", rx_data[i+], i+);
+            if(i == 2){ 
+                printf("%d %c%c", rx_data[i+1], metrics[i], metrics[i+1]);
+            }else{
+                printf("%d %c", rx_data[i+1], metrics[i]);
+            }
             __delay_ms(1000);
             printf("\f");
         }

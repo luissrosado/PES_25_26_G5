@@ -14,8 +14,7 @@
 #define LED_LAT          LATBbits.LATB14
 
 
-unsigned short spiBufT;		// SPI buffer for transmission
-uint16_t My_Slave_Array;	// SPI buffer for Receiving
+uint16_t rx_data;	// SPI buffer for Receiving
 uint16_t tx_data[4] = {0xA000, 0xB000, 0xC000,  0xD000};
 
 unsigned char spiCount=0;		// variable for how many data has been received from SPI bus
@@ -74,38 +73,36 @@ void SPI1Init(void)
 
     
 //void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void) {
-void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
+/*void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
         IFS3bits.SPI1RXIF = 0;  // clean interrup flag
-        LED_LAT = 1;
+       
         if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
             while (SPI1STATLbits.SPITBF); // espera buffer livre
-            My_Slave_Array = SPI1BUFL; // read master com
-            spiCount++;
-            SPI1BUFL = 0xB000;             // envia de volta
+            rx_data = SPI1BUFL; // read master com
         }else{
             SPI1STATLbits.SPIROV = 0; // clean overflow
         }
-        __delay_ms(2000);
-        LED_LAT = 0;
+
+}*/
+
+void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
+    IFS3bits.SPI1RXIF = 0;  
+
+    if (!SPI1STATLbits.SPIROV) {
+        rx_data = SPI1BUFL;  // dado recebido do master
+
+        switch(rx_data){
+            case 0: SPI1BUFL = 0x0001; break;
+            case 1: SPI1BUFL = 0x0002; break;
+            case 2: SPI1BUFL = 0x0003; break;
+            case 3: SPI1BUFL = 0x0004; break;
+            default: SPI1BUFL = 0xFFFF; break;
+        }
+    } else {
+        SPI1STATLbits.SPIROV = 0;
+    }
 }
 
-/*
-void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
-        IFS3bits.SPI1RXIF = 0;  // clean interrup flag
-        LED_LAT = 1;
-        if (SPI1STATLbits.SPIROV == 0 ) { // check overflow
-        for (uint8_t i = 0; i < 4; i++) {
-            while (SPI1STATLbits.SPITBF);
-            SPI1BUFL = tx_data[i];
-            My_Slave_Array[i] = SPI1BUFL;        
-            spiCount++;   
-        }            
-        }else{
-            SPI1STATLbits.SPIROV = 0; // clean overflow
-        }
-        __delay_ms(2000);
-        LED_LAT = 0;
-}*/
 
 
 int main(void){

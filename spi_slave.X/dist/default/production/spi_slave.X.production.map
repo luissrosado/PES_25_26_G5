@@ -53,8 +53,6 @@ c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_
                               c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o) (__data_init_da)
 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
                               (__crt_start_mode_normal)
-c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                              build/default/production/main.o (___delay32)
 
 
 Selected CodeGuard Options:
@@ -88,12 +86,11 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x156           0x201  (513)
-.text                        0x256                0x78            0xb4  (180)
-.init.delay32                0x2ce                0x1c            0x2a  (42)
-.dinit                       0x2ea                0x14            0x1e  (30)
+.text                        0x100               0x15a           0x207  (519)
+.text                        0x25a                0x78            0xb4  (180)
+.dinit                       0x2d2                0x14            0x1e  (30)
 
-                 Total "program" memory used (bytes):          0x2fd  (765) <1%
+                 Total "program" memory used (bytes):          0x2d9  (729) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -101,9 +98,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .ndata                       0x800                   0             0x8  (8)
-.nbss                        0x808                   0             0x6  (6)
+.nbss                        0x808                   0             0x4  (4)
 
-                 Total "data" memory used (bytes):            0xe  (14) <1%
+                 Total "data" memory used (bytes):            0xc  (12) <1%
 
 
 Dynamic Memory Usage
@@ -111,9 +108,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x80e                              0x3ff2  (16370)
+stack                        0x80c                              0x3ff4  (16372)
 
-                 Maximum dynamic memory (bytes):         0x3ff2  (16370)
+                 Maximum dynamic memory (bytes):         0x3ff4  (16372)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -121,42 +118,38 @@ Info: Project is using a large data memory model when small data memory model is
 External Symbols in Data Memory (by address):
 
                     0x0800                  _tx_data
-                    0x0808                  _spiBufT
-                    0x080a                  _My_Slave_Array
-                    0x080c                  _spiCount
+                    0x0808                  _rx_data
+                    0x080a                  _spiCount
 
 External Symbols in Data Memory (by name):
 
-                    0x080a                  _My_Slave_Array
-                    0x0808                  _spiBufT
-                    0x080c                  _spiCount
+                    0x0808                  _rx_data
+                    0x080a                  _spiCount
                     0x0800                  _tx_data
 
 External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
-                  0x000152                  __data_init
                   0x000152                  __data_init_da
+                  0x000152                  __data_init
                   0x000204                  __SPI1RXInterrupt
-                  0x000250                  __DefaultInterrupt
-                  0x000256                  _SPI1Init
-                  0x0002c8                  _main
-                  0x0002ce                  ___delay32
+                  0x000254                  __DefaultInterrupt
+                  0x00025a                  _SPI1Init
+                  0x0002cc                  _main
                   0x02af00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000256                  _SPI1Init
-                  0x000250                  __DefaultInterrupt
+                  0x00025a                  _SPI1Init
+                  0x000254                  __DefaultInterrupt
                   0x02af00                  __FSEC.sec
                   0x000204                  __SPI1RXInterrupt
-                  0x0002ce                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x0002c8                  _main
+                  0x0002cc                  _main
 
 Memory Configuration
 
@@ -203,7 +196,7 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x156
+.text             0x000100        0x15a
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
                   0x000100                  __resetPRI
@@ -215,18 +208,18 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x000204         0x4c build/default/production/main.o
+ .isr.text        0x000204         0x50 build/default/production/main.o
                   0x000204                  __SPI1RXInterrupt
- .isr             0x000250          0x4 default_isr
-                  0x000250                  __DefaultInterrupt
+ .isr             0x000254          0x4 default_isr
+                  0x000254                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x000254          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
-                  0x000254                  __crt_start_mode
-                  0x000254                  __crt_start_mode_normal
+                  0x000258          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalda.Meo)
+                  0x000258                  __crt_start_mode
+                  0x000258                  __crt_start_mode_normal
 
 usercode
  *(usercode)
@@ -263,26 +256,26 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1584
+.debug_info       0x000000       0x156e
  *(.debug_info)
- .debug_info      0x000000       0x1584 build/default/production/main.o
+ .debug_info      0x000000       0x156e build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x149
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x149 build/default/production/main.o
 
-.debug_line       0x000000        0x146
+.debug_line       0x000000        0x147
  *(.debug_line)
- .debug_line      0x000000        0x146 build/default/production/main.o
+ .debug_line      0x000000        0x147 build/default/production/main.o
 
-.debug_frame      0x000000         0x86
+.debug_frame      0x000000         0x6c
  *(.debug_frame)
- .debug_frame     0x000000         0x86 build/default/production/main.o
+ .debug_frame     0x000000         0x6c build/default/production/main.o
 
-.debug_str        0x000000         0xfb
+.debug_str        0x000000         0xe3
  *(.debug_str)
- .debug_str       0x000000         0xfb build/default/production/main.o
+ .debug_str       0x000000         0xe3 build/default/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -291,10 +284,10 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x75
+                  0x000000         0x62
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x75 build/default/production/main.o
+                  0x000000         0x62 build/default/production/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1656,25 +1649,22 @@ LOAD data_init
                   0x000018        0x229 build/default/production/main.o
 
 __c30_signature
-                  0x000241         0x18
+                  0x000241         0x12
  __c30_signature
                   0x000241          0x6 build/default/production/main.o
  __c30_signature
                   0x000247          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extended24.o)
  __c30_signature
                   0x00024d          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_24.o)
- __c30_signature
-                  0x000253          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
 
 .ndata              0x0800          0x8
  .ndata             0x0800          0x8 build/default/production/main.o
                     0x0800                  _tx_data
 
-.nbss               0x0808          0x6
- .nbss              0x0808          0x6 build/default/production/main.o
-                    0x0808                  _spiBufT
-                    0x080a                  _My_Slave_Array
-                    0x080c                  _spiCount
+.nbss               0x0808          0x4
+ .nbss              0x0808          0x4 build/default/production/main.o
+                    0x0808                  _rx_data
+                    0x080a                  _spiCount
 
 .config_ALTI2C1
                   0x02af2c          0x2
@@ -1707,14 +1697,10 @@ __c30_signature
  .ivt._SPI1RXInterrupt
                   0x000088          0x2 build/default/production/main.o
 
-.text             0x000256         0x78
- .text            0x000256         0x78 build/default/production/main.o
-                  0x000256                  _SPI1Init
-                  0x0002c8                  _main
+.text             0x00025a         0x78
+ .text            0x00025a         0x78 build/default/production/main.o
+                  0x00025a                  _SPI1Init
+                  0x0002cc                  _main
 
-.init.delay32     0x0002ce         0x1c
- .init.delay32    0x0002ce         0x1c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(delay32da.Meo)
-                  0x0002ce                  ___delay32
-
-.dinit            0x0002ea         0x14
- .dinit           0x0002ea         0x14 data_init
+.dinit            0x0002d2         0x14
+ .dinit           0x0002d2         0x14 data_init
