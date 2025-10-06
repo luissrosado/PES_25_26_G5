@@ -90,14 +90,6 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
 
     if (!SPI1STATLbits.SPIROV) {
         rx_data = SPI1BUFL;  // dado recebido do master
-
-        switch(rx_data){
-            case 0: SPI1BUFL = 0x0001; break;
-            case 1: SPI1BUFL = 0x0002; break;
-            case 2: SPI1BUFL = 0x0003; break;
-            case 3: SPI1BUFL = 0x0004; break;
-            default: SPI1BUFL = 0xFFFF; break;
-        }
     } else {
         SPI1STATLbits.SPIROV = 0;
     }
@@ -107,5 +99,13 @@ void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void){
 
 int main(void){
     SPI1Init();
-    while(1);
+    while(1){
+        switch(rx_data){
+        case 0: SPI1BUFL = 0x0101; break;
+        case 1: SPI1BUFL = 0x0202; break;
+        case 2: SPI1BUFL = 0x0303; break;
+        case 3: SPI1BUFL = 0x0404; break;
+        default: SPI1BUFL = 0xFFFF; break;
+        }
+    }
 }
