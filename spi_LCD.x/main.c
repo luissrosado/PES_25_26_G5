@@ -187,6 +187,8 @@ int main ( void )
     while(1){
         if(uart_rx == 1){
             spi_com_uart(uart_rx - 1, rx_data);
+            __delay_ms(100);
+            spi_com_uart(uart_rx - 1, rx_data);
             U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
             while(U1STAbits.UTXBF);                // wait until buffer clean
             U1TXREG = rx_data & 0xFF;              // send the rest
@@ -194,12 +196,16 @@ int main ( void )
         }
         if(uart_rx == 2){
             spi_com_uart(uart_rx - 1, rx_data);
+            __delay_ms(100);
+            spi_com_uart(uart_rx - 1, rx_data);
             U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
             while(U1STAbits.UTXBF);                // wait until buffer clean
             U1TXREG = rx_data & 0xFF;              // send the rest
             uart_rx = 0;
         }
         if(uart_rx == 3){
+            spi_com_uart(uart_rx - 1, rx_data);
+            __delay_ms(100);
             spi_com_uart(uart_rx - 1, rx_data);
             U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
             while(U1STAbits.UTXBF);                // wait until buffer clean
