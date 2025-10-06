@@ -107,13 +107,23 @@ void SerialInit(){
     U1STAbits.UTXEN = 1;//enable transmission
 }
 
-void spi_com(uint16_t data, uint16_t *rx_data)
+/*void spi_com(uint16_t data, uint16_t *rx_data)
 {
     LATBbits.LATB1 = 0;
     __delay_us(5);// select slave
     SPI1BUFL  = data;                    // write to buffer for Transmit
     while(!SPI1STATLbits.SPIRBF);       // Wait until tx is completed
     rx_data[data] = SPI1BUFL;               // read the received value 
+    LATBbits.LATB1 = 1;
+}*/
+
+void spi_com_uart(uint16_t data, uint16_t rx_data)
+{
+    LATBbits.LATB1 = 0;
+    __delay_us(5);// select slave
+    SPI1BUFL  = data;                    // write to buffer for Transmit
+    while(!SPI1STATLbits.SPIRBF);       // Wait until tx is completed
+    rx_data = SPI1BUFL;               // read the received value 
     LATBbits.LATB1 = 1;
 }
 
@@ -160,7 +170,7 @@ int main ( void )
     
     uint16_t select_message = 0;
     /* 0 -- power, 1 -- corrente, 2 -- tensao*/
-    uint16_t rx_data[4];
+    uint16_t rx_data;
     char metrics[4];
     metrics[0] = 'w';
     metrics[1] = 'A';
@@ -171,7 +181,46 @@ int main ( void )
     SerialInit();
     
     printf("olaaaaaaa");
-    while(1)
+    uint8_t uart_rx = U1RXREG; //message of uart
+    // 1 -- power, 2 -- corrente, 3 -- tensao 
+    
+    while(1){
+        if(uart_rx == 1){
+            spi_com_uart(uart_rx - 1, rx_data);
+            U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
+            while(U1STAbits.UTXBF);                // wait until buffer clean
+            U1TXREG = rx_data & 0xFF;              // send the rest
+            uart_rx = 0;
+        }
+        if(uart_rx == 2){
+            spi_com_uart(uart_rx - 1, rx_data);
+            U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
+            while(U1STAbits.UTXBF);                // wait until buffer clean
+            U1TXREG = rx_data & 0xFF;              // send the rest
+            uart_rx = 0;
+        }
+        if(uart_rx == 3){
+            spi_com_uart(uart_rx - 1, rx_data);
+            U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
+            while(U1STAbits.UTXBF);                // wait until buffer clean
+            U1TXREG = rx_data & 0xFF;              // send the rest
+            uart_rx = 0;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*while(1)
     {
         printf("\f");
         printf("Nova medicao");
@@ -191,7 +240,7 @@ int main ( void )
             __delay_ms(1000);
             printf("\f");
         }
-    }
+    }*/
     
 }
 
