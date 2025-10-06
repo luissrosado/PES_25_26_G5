@@ -3948,26 +3948,6 @@
 		)
 		(uuid "84836e78-692f-4c25-a3bb-b3408ca7c163")
 	)
-	(text "footprint resistencia shunt"
-		(exclude_from_sim no)
-		(at 72.644 16.256 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "ba194086-479a-4877-af5c-1d73d18dbffd")
-	)
-	(text "footprint dos mosfets tem gate e dreno trocados"
-		(exclude_from_sim no)
-		(at 131.826 20.32 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "fef3e468-14ef-41f7-aaed-294d8e77d764")
-	)
 	(global_label "PGC2"
 		(shape input)
 		(at 46.99 102.87 0)
@@ -4140,6 +4120,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CLK"
+		(shape input)
+		(at 46.99 116.84 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5449900c-47aa-4d49-8d60-9a50b2b185c9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.5433 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -4342,6 +4344,28 @@
 			)
 		)
 	)
+	(global_label "MOSI"
+		(shape input)
+		(at 46.99 121.92 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b08932b8-8459-47ff-b15f-40060fec8eec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 54.5714 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "CLK"
 		(shape input)
 		(at 115.57 78.74 180)
@@ -4430,28 +4454,6 @@
 			)
 		)
 	)
-	(global_label "CLK"
-		(shape input)
-		(at 46.99 119.38 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "cf21fb80-d2a0-45a3-8100-e115d618acc0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 53.5433 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "MISO"
 		(shape input)
 		(at 115.57 86.36 180)
@@ -4470,28 +4472,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "MOSI"
-		(shape input)
-		(at 46.99 116.84 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d94d84f0-6648-4adc-a37a-a489b5d274ef")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 54.5714 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -4520,7 +4500,7 @@
 	)
 	(global_label "MISO"
 		(shape input)
-		(at 46.99 121.92 0)
+		(at 46.99 119.38 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4530,7 +4510,7 @@
 		)
 		(uuid "f43fdc09-b307-4382-b91e-47f523b90605")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 54.5714 121.92 0)
+			(at 54.5714 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5571,7 +5551,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
 			(at 71.12 27.178 90)
 			(effects
 				(font
@@ -6553,7 +6533,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220F-3_Horizontal_TabUp"
 			(at 181.61 35.56 0)
 			(effects
 				(font
@@ -6929,7 +6909,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220F-3_Horizontal_TabUp"
 			(at 137.16 35.56 0)
 			(effects
 				(font
@@ -7327,7 +7307,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220F-3_Horizontal_TabUp"
 			(at 92.71 35.56 0)
 			(effects
 				(font
