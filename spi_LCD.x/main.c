@@ -83,17 +83,35 @@ void spi_init()
 
    
    SPI1CON1Lbits.SPIEN = 1;      // Enable the spi peripheral
-   
-   
-   
+}
 
+void SerialInit(){
+    U1BRG = 103;//U1BRG = (4000000)/(16*9600) - 1
+
+    //UART SETUP
+    U1MODEbits.PDSEL = 0;//No parity, 8 bits
+    U1MODEbits.STSEL = 0;//One Stop Bit
+    U1MODEbits.UEN = 0;//only U1TX and U1RX
+    U1MODEbits.BRGH = 0; //Standard speed mode
+
+    U1STAbits.UTXISEL1 = 0;//tx isr when a write occurs to TX BUF
+    U1STAbits.UTXISEL0 = 0;
+    
+    RPOR8bits.RP17R = 3;// Assign U1TX To Pin RP2 //Pino 50
+    RPINR18bits.U1RXR = 10; // Assign U1RX To Pin RP10 //Pino 49
+    //RPOR5bits.RP10R = 3;//U1TX -> RP10
+
+    
+    U1MODEbits.UARTEN = 1;//enable UART
+
+    U1STAbits.UTXEN = 1;//enable transmission
 }
 
 void spi_com(uint16_t data, uint16_t *rx_data)
 {
     LATBbits.LATB1 = 0;
     __delay_us(5);// select slave
-    SPI1BUFL  = data;                 // write to buffer for Transmit
+    SPI1BUFL  = data;                    // write to buffer for Transmit
     while(!SPI1STATLbits.SPIRBF);       // Wait until tx is completed
     rx_data[data] = SPI1BUFL;               // read the received value 
     LATBbits.LATB1 = 1;
@@ -150,6 +168,8 @@ int main ( void )
     metrics[3] = 'V';
     
     spi_init();
+    SerialInit();
+    
     printf("olaaaaaaa");
     while(1)
     {
