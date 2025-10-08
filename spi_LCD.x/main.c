@@ -75,8 +75,8 @@ void spi_init()
    RPOR10bits.RP21R = 8;           // clock config pin to rp21 P10
    
    // chip select pin RB1  P24
-   ANSELBbits.ANSB1 = 0;
-   TRISBbits.TRISB1 = 0;
+   ANSELGbits.ANSG9 = 0;
+   TRISGbits.TRISG9 = 0;
    
    ANSELGbits.ANSG7 = 0;
    ANSELGbits.ANSG8 = 0;
@@ -86,7 +86,7 @@ void spi_init()
 }
 
 void SerialInit(){
-    U1BRG = 103;//U1BRG = (4000000)/(16*9600) - 1
+    U1BRG = 25;//U1BRG = (4000000)/(16*9600) - 1
 
     //UART SETUP
     U1MODEbits.PDSEL = 0;//No parity, 8 bits
@@ -119,14 +119,13 @@ void SerialInit(){
 
 void spi_com_uart(uint16_t data, uint16_t rx_data)
 {
-    LATBbits.LATB1 = 0;
+    LATGbits.LATG9 = 0;
     __delay_us(5);// select slave
     SPI1BUFL  = data;                    // write to buffer for Transmit
     while(!SPI1STATLbits.SPIRBF);       // Wait until tx is completed
     rx_data = SPI1BUFL;               // read the received value 
-    LATBbits.LATB1 = 1;
+    LATGbits.LATG9 = 1;
 }
-
 
 
 
@@ -181,37 +180,20 @@ int main ( void )
     SerialInit();
     
     printf("olaaaaaaa");
-    uint8_t uart_rx = U1RXREG; //message of uart
+    char uart_rx = U1RXREG; //message of uart
     // 1 -- power, 2 -- corrente, 3 -- tensao 
+    __delay_ms(1000);
     
     while(1){
-        if(uart_rx == 1){
-            spi_com_uart(uart_rx - 1, rx_data);
-            __delay_ms(100);
-            spi_com_uart(uart_rx - 1, rx_data);
-            U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
-            while(U1STAbits.UTXBF);                // wait until buffer clean
-            U1TXREG = rx_data & 0xFF;              // send the rest
-            uart_rx = 0;
-        }
-        if(uart_rx == 2){
-            spi_com_uart(uart_rx - 1, rx_data);
-            __delay_ms(100);
-            spi_com_uart(uart_rx - 1, rx_data);
-            U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
-            while(U1STAbits.UTXBF);                // wait until buffer clean
-            U1TXREG = rx_data & 0xFF;              // send the rest
-            uart_rx = 0;
-        }
-        if(uart_rx == 3){
-            spi_com_uart(uart_rx - 1, rx_data);
-            __delay_ms(100);
-            spi_com_uart(uart_rx - 1, rx_data);
-            U1TXREG = (rx_data >> 8) & 0xFF;       // send first 8 bits
-            while(U1STAbits.UTXBF);                // wait until buffer clean
-            U1TXREG = rx_data & 0xFF;              // send the rest
-            uart_rx = 0;
-        }
+        U1TXREG = '4';
+        __delay_ms(1000);
+        uart_rx = U1RXREG;
+        __delay_ms(1000);
+        printf("%c", uart_rx);
+        U1RXREG = 0;
+        __delay_ms(1000);
+        printf("\f");
+        uart_rx = 0;
     }
     
     
