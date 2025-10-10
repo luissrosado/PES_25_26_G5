@@ -24,6 +24,7 @@
       <itemPath>pwm.c</itemPath>
       <itemPath>spi.c</itemPath>
       <itemPath>waketimer.c</itemPath>
+      <itemPath>controller.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

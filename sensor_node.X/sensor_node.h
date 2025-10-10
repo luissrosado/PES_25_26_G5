@@ -74,6 +74,8 @@ void I2C_Calibrate_INA(uint8_t slave_addr, uint16_t cal);
 void PWM_init(uint16_t channel, uint16_t dcyc);
 void PWM_updDcyc(uint16_t channel, uint16_t dcyc);
 
+void controller(uint16_t target, uint16_t current_read){
+
 void SPI1Init(void);
 void __attribute__((interrupt, no_auto_psv)) _SPI1RXInterrupt(void);
 
