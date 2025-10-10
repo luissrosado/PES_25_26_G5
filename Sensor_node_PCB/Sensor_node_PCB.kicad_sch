@@ -2854,6 +2854,12 @@
 		(uuid "131dc742-371b-4996-91ae-a61d4909a6a0")
 	)
 	(junction
+		(at 173.99 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1604ce73-ccf2-4230-8527-4dc106a2b7e3")
+	)
+	(junction
 		(at 53.34 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3191,6 +3197,16 @@
 	)
 	(wire
 		(pts
+			(xy 173.99 121.92) (xy 184.15 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "358e8413-e323-4c18-b454-355363d4e84b")
+	)
+	(wire
+		(pts
 			(xy 66.04 62.23) (xy 66.04 71.12)
 		)
 		(stroke
@@ -3448,6 +3464,16 @@
 			(type default)
 		)
 		(uuid "bf21d58c-59c3-4866-8cb9-39ae80ca5dee")
+	)
+	(wire
+		(pts
+			(xy 162.56 121.92) (xy 173.99 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfd6d67f-2262-4afd-91b2-91c5965d34f8")
 	)
 	(wire
 		(pts
@@ -4964,6 +4990,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VDD")
+		(at 173.99 121.92 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1ba2ddf3-1c87-4ccb-a6c9-4fe6d6a40659")
+		(property "Reference" "#PWR015"
+			(at 173.99 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 175.768 125.984 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 173.99 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.99 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
+			(at 173.99 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c4e27d15-4614-4961-9fd0-474f68917a89")
+		)
+		(instances
+			(project "Sensor_node_PCB"
+				(path "/c9ef9ad9-c769-4c3b-ad3d-4e0c492bcfd2"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 175.26 74.93 90)
 		(unit 1)
@@ -5339,6 +5431,82 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 184.15 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2fc6c65d-ee34-4def-9a9a-b71c381f305f")
+		(property "Reference" "TP4"
+			(at 186.69 117.3479 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 186.69 119.8879 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
+			(at 189.23 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 184.15 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser link" ""
+			(at 184.15 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "96bdf183-5321-4921-a6f8-24c3b94df942")
+		)
+		(instances
+			(project "Sensor_node_PCB"
+				(path "/c9ef9ad9-c769-4c3b-ad3d-4e0c492bcfd2"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 182.88 74.93 180)
 		(unit 1)
@@ -5410,6 +5578,82 @@
 			(project ""
 				(path "/c9ef9ad9-c769-4c3b-ad3d-4e0c492bcfd2"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 162.56 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "362e03cf-9b56-41fc-81cf-cece9a812bbb")
+		(property "Reference" "TP3"
+			(at 165.1 117.3479 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 165.1 119.8879 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
+			(at 167.64 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 167.64 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 162.56 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser link" ""
+			(at 162.56 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "597c2601-1c64-4f34-9a5b-0ddbca7476ff")
+		)
+		(instances
+			(project "Sensor_node_PCB"
+				(path "/c9ef9ad9-c769-4c3b-ad3d-4e0c492bcfd2"
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -7891,7 +8135,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_1.00mm:PinHeader_1x02_P1.00mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.00mm:PinHeader_1x02_P2.00mm_Vertical"
 			(at 46.99 28.956 90)
 			(effects
 				(font
